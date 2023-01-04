@@ -1,0 +1,1948 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>4&ordm; Laborat&oacute;rio de Modela&ccedil;&atilde;o e Simula&ccedil;&atilde;o 2019/20</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-06-02"><meta name="DC.source" content="lab4.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>4&ordm; Laborat&oacute;rio de Modela&ccedil;&atilde;o e Simula&ccedil;&atilde;o 2019/20</h1><!--introduction--><p>Detec&ccedil;&atilde;o de hotspots WiFi</p><p>Alice Rosa, N&ordm; 90007</p><p>Beatriz Pereira, N&ordm; 90029</p><p>Grupo 16, Turno 3&ordf; feira &agrave;s 9h00</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Quest&atilde;o 2.a)</a></li><li><a href="#4">Quest&atilde;o 2.b)</a></li><li><a href="#7">Quest&atilde;o 2.c)</a></li><li><a href="#10">Quest&atilde;o 2.d)</a></li><li><a href="#12">Quest&atilde;o 2.d) Ponto de vista da equipa</a></li><li><a href="#14">Quest&atilde;o 2.d) Ponto de vista de um elemento hostil</a></li><li><a href="#17">Quest&atilde;o 3.a)</a></li><li><a href="#24">Quest&atilde;o 3.b)</a></li><li><a href="#28">Quest&atilde;o 3.c)</a></li></ul></div><h2>Quest&atilde;o 2.a)<a name="1"></a></h2><p>Nesta quest&atilde;o, decomp&ocirc;s-se a matriz transposta de probabilidades de transi&ccedil;&atilde;o entre estados, P', em valores pr&oacute;prios e vetores pr&oacute;prios. De seguida, obteve-se a distribui&ccedil;&atilde;o de equil&iacute;brio da cadeia de Markov por normaliza&ccedil;&atilde;o do vetor pr&oacute;prio associado ao valor pr&oacute;prio mais pr&oacute;ximo de 1.</p><pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+load(<span class="string">'MarkovChain.mat'</span>);
+
+<span class="comment">%valores e vetores pr&oacute;prios da matriz P'</span>
+[vect, val]= eig(P');
+
+<span class="comment">%Determinar o valor pr&oacute;prio mais pr&oacute;ximo de 1</span>
+min= 900;
+
+  <span class="keyword">for</span> i=1:length(val)
+    <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+        min=abs(val(i,i)-1);
+        ind=i;
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="comment">% Associar o vetor pr&oacute;prio a esse &iacute;ndice</span>
+Vp= vect(:,ind);
+
+<span class="comment">% normaliza&ccedil;&atilde;o do vetor pr&oacute;prio</span>
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+<span class="comment">%soma das probabilidades tem de ser igual a 1</span>
+Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%distribui&ccedil;&atilde;o de equilibro da cadeia de Markov</span>
+bar(Vp_normalizado);
+
+xlabel(<span class="string">'Estados'</span>);
+xlim([0 21]);
+ylabel(<span class="string">'Probabilidade de estado'</span>);
+title(<span class="string">'Distribui&ccedil;&atilde;o de equil&iacute;brio da cadeia de Markov'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+</pre><img vspace="5" hspace="5" src="lab4_01.png" alt=""> <p>Por an&aacute;lise do gr&aacute;fico da distribui&ccedil;&atilde;o de equil&iacute;brio da cadeira de Markov, conclui-se que os estados mais prov&aacute;veis s&atilde;o o 7 e o 19 (P=0.09649), sendo que estes correspondem, tamb&eacute;m, aos n&oacute;s do grafo com maior n&uacute;mero de liga&ccedil;&otilde;es e os estados menos prov&aacute;veis s&atilde;o o 8 e 17 (P=0.01072).</p><h2>Quest&atilde;o 2.b)<a name="4"></a></h2><p>Tendo em conta a distribui&ccedil;&atilde;o de equil&iacute;brio da cadeia de Markov da al&iacute;nea anterior, resolveu-se uma vers&atilde;o ponderada do problema de m&iacute;nimos quadr&aacute;ticos, para um M suficientemente longo de medi&ccedil;&otilde;es arbitr&aacute;rio, de modo a determinar a posi&ccedil;&atilde;o da fonte estimada.</p><pre class="codeinput">Po=100; <span class="comment">%Pot&ecirc;ncia da fonte</span>
+
+variancia=10^-2;
+
+M=1000; <span class="comment">%N&uacute;mero de medi&ccedil;&otilde;es</span>
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); <span class="comment">%Fonte-&acirc;ncora dist&acirc;ncia</span>
+
+<span class="comment">% Posi&ccedil;&atilde;o estimada da fonte</span>
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+<span class="comment">% Plot</span>
+figure(2)
+plot(nodePos(:,2),nodePos(:,3),<span class="string">'o'</span>); hold <span class="string">on</span>
+plot(sourcePos(:,1),sourcePos(:,2),<span class="string">'x'</span>); plot(x(:,1),x(:,2),<span class="string">'s'</span>); hold <span class="string">on</span>
+axis(100*[0 1 0 1]); axis(<span class="string">'square'</span>)
+legend( {<span class="string">'&Acirc;ncoras'</span>,<span class="string">'Fonte'</span>, <span class="string">'Posi&ccedil;&atilde;o estimada da fonte'</span>},<span class="string">'Location'</span>,<span class="string">'southwest'</span> );
+title(<span class="string">'Posi&ccedil;&atilde;o da fonte e das &acirc;ncoras'</span>);
+
+<span class="comment">% Fun&ccedil;&atilde;o que estima a posi&ccedil;&atilde;o da fonte</span>
+type (<span class="string">'sourcePos_estimativa'</span>);
+</pre><pre class="codeoutput">
+function x=sourcePos_estimativa(M,Po,variancia,Vp,a,d)
+
+% Inicializa&ccedil;&atilde;o das matrizes A, b e Pi
+A=zeros(M,4);
+b=zeros(M,1);
+Pi=zeros(M,1);
+
+token_anc=round(Vp.*M); % N&uacute;mero de vezes que o token passa por cada &acirc;ncora
+
+% calcula-se a diferen&ccedil;a entre o n&uacute;mero de total de medi&ccedil;&otilde;es e o n&uacute;mero de
+% medi&ccedil;&otilde;es definido. Se a diferen&ccedil;a for negativa, soma-se o m&oacute;dulo ao
+% n&uacute;mero de medi&ccedil;&otilde;es da &uacute;ltima &acirc;ncora. Se for positiva, substrai-se.
+
+dif=sum(token_anc)-M;
+
+if dif&lt;0
+    token_anc(20)=token_anc(20)+abs(dif);
+elseif dif&gt;0
+    token_anc(20)=token_anc(20)-dif;
+end
+
+n=randn(M,1)*sqrt(variancia); % distribui&ccedil;&atilde;o gaussiana do ru&iacute;do
+j=1;
+
+for i=1:20
+    contagem=token_anc(i); % Contagem do n&uacute;mero total de medi&ccedil;&otilde;es para cada &acirc;ncora 
+    while contagem&gt;0 % Contagem decrescente 
+        Pi(j)=(Po/(d(i))^2)*exp(n(j)); %Pot&ecirc;ncia na observa&ccedil;&atilde;o j
+        %constru&ccedil;&atilde;o das matrizes A e b
+        A(j,1)=-2*Pi(j)*a(1,i);
+        A(j,2)=-2*Pi(j)*a(2,i);
+        A(j,3)=-1;
+        A(j,4)=Pi(j);
+        b(j)=-Pi(j)*(norm(a(1:2,i)))^2;
+        
+        contagem=contagem-1;
+        j=j+1;
+    end
+
+end
+
+rls_Par=struct('lam',1);
+[~,w,~]=qrrls(A,b,rls_Par); % Retorna o vector de coeficientes do filtro transversal convencional, w
+
+x=[w(1) w(2)]; %estimativa posi&ccedil;&atilde;o da fonte
+
+end
+</pre><img vspace="5" hspace="5" src="lab4_02.png" alt=""> <p>Conclui-se que, para um n&uacute;mero elevado de medi&ccedil;&otilde;es, o m&eacute;todo dos m&iacute;nimos quadrados fornece uma boa estimativa para a posi&ccedil;&atilde;o da fonte, sendo que o pequeno desvio apresentado deve-se &agrave; presen&ccedil;a de ru&iacute;do.</p><h2>Quest&atilde;o 2.c)<a name="7"></a></h2><p>Fez-se a simula&ccedil;&atilde;o da evolu&ccedil;&atilde;o das probabilidades dos diversos estados da cadeia de Markov, ao longo do tempo, para diferentes condi&ccedil;&otilde;es iniciais de <img src="lab4_eq12719111378361454579.png" alt="$\pi$">(0).</p><p>A evolu&ccedil;&atilde;o das probabilidades dos estados de uma cadeia de Markov, entre dois instantes de tempo consecutivos, &eacute; dada por <img src="lab4_eq01255790915602188334.png" alt="$\pi'(t+1)=\pi'(t)P$">.</p><pre class="codeinput">clearvars <span class="string">-except</span> <span class="string">Vp_normalizado</span>;
+close <span class="string">all</span>;
+
+load(<span class="string">'MarkovChain.mat'</span>);
+
+<span class="comment">% --- 1&ordf; Condi&ccedil;&atilde;o Inicial ---</span>
+
+ t=1:200;
+
+ pi_0=zeros(1,20)';
+
+ <span class="comment">% Inicializa&ccedil;&atilde;o no estado 7</span>
+ pi_0(7)=1;
+ pi_t1=pi_0;
+
+ <span class="comment">%soma de todas as entradas do vetor pi</span>
+ soma_pi_1(1)=sum(pi_t1);
+
+ <span class="comment">% evolu&ccedil;&atilde;o das probabilidades dos estados de uma cadeia de Markov</span>
+ <span class="keyword">for</span> i=1:199
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+figure(1)
+plot3(t,estados,pi_t1);
+xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Condi&ccedil;&atilde;o inicial no centro do grafo'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+
+ figure(2)
+ plot(t,soma_pi_1);
+ ylim([0.95 1.05]);
+ xlabel(<span class="string">'Tempo (t)'</span>);
+ ylabel(<span class="string">'Soma das probabilidades'</span>);
+ title(<span class="string">'Soma das entradas \pi(t)'</span>);
+ set(gca,<span class="string">'Fontsize'</span>,12);
+
+ <span class="comment">% --- 2&ordf; Condi&ccedil;&atilde;o Inicial ---</span>
+
+ pi_0=zeros(1,20)';
+
+ <span class="comment">% Inicializa&ccedil;&atilde;o no estado 17</span>
+ pi_0(17)=1;
+ pi_t2=pi_0;
+
+ soma_pi_2(1)=sum(pi_t2); <span class="comment">%soma das probabilidades</span>
+
+ <span class="comment">% evolu&ccedil;&atilde;o das probabilidades dos estados de uma cadeia de Markov</span>
+ <span class="keyword">for</span> i=1:199
+     pi_t2(:,i+1)=pi_0'*(P^(i));
+     soma_pi_2(i+1)=sum(pi_t2(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+figure(3)
+plot3(t,estados,pi_t2);
+xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Condi&ccedil;&atilde;o inicial num estado que ret&eacute;m o token'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+
+ figure(4)
+ plot(t,soma_pi_2);
+ ylim([0.95 1.05]);
+ xlabel(<span class="string">'Tempo (t)'</span>);
+ ylabel(<span class="string">'Soma das probabilidades'</span>);
+ title(<span class="string">'Soma das entradas \pi(t)'</span>);
+ set(gca,<span class="string">'Fontsize'</span>,12);
+
+ <span class="comment">% --- 3&ordf; Condi&ccedil;&atilde;o Inicial ---</span>
+
+ pi_0=zeros(1,20)';
+ <span class="comment">%distribui&ccedil;&atilde;o inicial uniforme</span>
+ pi_0(:,1)=1/20;
+ pi_t3=pi_0;
+
+ soma_pi_3(1)=sum(pi_t3); <span class="comment">%soma das probabilidades</span>
+
+ <span class="comment">% evolu&ccedil;&atilde;o das probabilidades dos estados de uma cadeia de Markov</span>
+ <span class="keyword">for</span> i=1:199
+     pi_t3(:,i+1)=pi_0'*(P^(i));
+     soma_pi_3(i+1)=sum(pi_t3(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+figure(5)
+plot3(t,estados,pi_t3);
+xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Distribui&ccedil;&atilde;o inicial uniforme'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+ figure(6)
+ plot(t,soma_pi_3);
+ ylim([0.95 1.05]);
+ xlabel(<span class="string">'Tempo (t)'</span>);
+ ylabel(<span class="string">'Soma das probabilidades'</span>);
+ title(<span class="string">'Soma das entradas \pi(t)'</span>);
+ set(gca,<span class="string">'Fontsize'</span>,12);
+
+ <span class="comment">% --- 4&ordf; Condi&ccedil;&atilde;o Inicial ---</span>
+
+ <span class="comment">%distribui&ccedil;&atilde;o inicial em equilibrio</span>
+ pi_0= Vp_normalizado;
+ pi_t4=pi_0;
+
+ soma_pi_4(1)=sum(pi_t4); <span class="comment">%soma das probabilidades</span>
+
+ <span class="keyword">for</span> i=1:199
+     pi_t4(:,i+1)=pi_0'*(P^(i));
+     soma_pi_4(i+1)=sum(pi_t4(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+figure(7)
+plot3(t,estados,pi_t4);
+xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Distribui&ccedil;&atilde;o inicial em equil&iacute;brio'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+
+ figure(8)
+ plot(t,soma_pi_4);
+ ylim([0.95 1.05]);
+ xlabel(<span class="string">'Tempo (t)'</span>);
+ ylabel(<span class="string">'Soma das probabilidades'</span>);
+ title(<span class="string">'Soma das entradas \pi(t)'</span>);
+ set(gca,<span class="string">'Fontsize'</span>,12);
+</pre><img vspace="5" hspace="5" src="lab4_03.png" alt=""> <img vspace="5" hspace="5" src="lab4_04.png" alt=""> <img vspace="5" hspace="5" src="lab4_05.png" alt=""> <img vspace="5" hspace="5" src="lab4_06.png" alt=""> <img vspace="5" hspace="5" src="lab4_07.png" alt=""> <img vspace="5" hspace="5" src="lab4_08.png" alt=""> <img vspace="5" hspace="5" src="lab4_09.png" alt=""> <img vspace="5" hspace="5" src="lab4_10.png" alt=""> <p>Simulou-se a evolu&ccedil;&atilde;o das probabilidades dos diversos estados da cadeia de Markov, ao longo do tempo, para quatro condi&ccedil;&otilde;es iniciais diferentes de <img src="lab4_eq10492656622677010387.png" alt="$\pi(0)$">.</p><p>Em primeiro lugar, incializou-se o token na &acirc;ncora 7, pois esta &eacute; uma &acirc;ncora central do grafo com quatro liga&ccedil;&otilde;es todas com igual probabilidade (P=0.25). Verifica-se que as probabilidades de todos os estados tendem para o equil&iacute;brio.</p><p>De seguida, inicializou-se o token num dos subconjuntos em que este fica retido durante um longo per&iacute;odo de tempo por ter menos probabilidade de sair do que ficar, portanto escolheu-se a &acirc;ncora 17, que corresponde, tamb&eacute;m, a um dos estados com menor probabilidade. Uma vez que se inicializa o token dentro deste subconjunto e este s&oacute; t&ecirc;m 20% probabilidade de sair, verifica-se, por observa&ccedil;&atilde;o do gr&aacute;fico, que o tempo de estabelecimento &eacute; superior ao caso anterior, isto &eacute;, as probabilidades dos estados demoram mais tempo a atingir o equil&iacute;brio.</p><p>Como terceiro caso, escolheu-se um vetor de probabilidades com distribui&ccedil;&atilde;o inicial uniforme. Daqui, uma vez que o token tem a mesma probabilidade de come&ccedil;ar em qualquer uma das &acirc;ncoras, este corresponde ao caso m&eacute;dio dos dois anteriores.</p><p>Por &uacute;ltimo, escolheu-se um vetor de probabilidades com distribui&ccedil;&atilde;o inicial em equilibrio, em que este &eacute; igual ao vetor de vetores pr&oacute;prios correspondente &agrave; distribui&ccedil;&atilde;o de equil&iacute;bro da cadeia de Markov (decomposi&ccedil;&atilde;o em valores e vetores pr&oacute;prios). Uma vez que o sistema se mant&eacute;m nesse estado indefinidamente, comprova-se que a distribui&ccedil;&atilde;o do sistema tende sempre para a posi&ccedil;&atilde;o de equil&iacute;brio.</p><h2>Quest&atilde;o 2.d)<a name="10"></a></h2><pre class="codeinput"> clear;
+ close <span class="string">all</span>;
+
+ MarkovChainDraw
+ title(<span class="string">'Grafo de comunica&ccedil;&otilde;es entre os agentes'</span>);
+</pre><img vspace="5" hspace="5" src="lab4_11.png" alt=""> <p>Atrav&eacute;s da an&aacute;lise do grafo de comunica&ccedil;&otilde;es entre agentes, das respetivas probabilidades de transi&ccedil;&atilde;o entre os v&aacute;rios estados e da distribui&ccedil;&atilde;o de equil&iacute;brio, identificaram-se dois subconjuntos de estados da cadeia onde o token pode ficar a circular durante relativamente longos intervalos de tempo.</p><p>Subconjunto 1: 5, 6, 11, 15.</p><p>Subconjunto 2: 8, 9, 10, 12, 17.</p><p>O token tem tend&ecirc;ncia a ficar preso nestes subconjuntos durante per&iacute;odos mais longos, pois em ambos os casos s&oacute; h&aacute; uma forma de sa&iacute;da e esta apresenta uma probabilidade inferiror &agrave;s liga&ccedil;&otilde;es de entrada. O subconjunto 1, apresenta uma probabilidade de sair de 20%, apenas a partir do n&oacute; 6, enquanto a probabilidade de se manter &eacute; de 80%. O mesmo acontece no subconjunto 2, em o token apresenta 20% de probabilidade de sair pelo n&oacute; 12 e 80% de ficar e se deslocar para o n&oacute; 8 ou 10.</p><p>Tal como se verificou na al&iacute;nea anterior, se o token for inicializado num destes subconjuntos ou entrar num deles, ir&aacute; tender para o equil&iacute;brio, mas o seu tempo de converg&ecirc;ncia ser&aacute; maior.</p><h2>Quest&atilde;o 2.d) Ponto de vista da equipa<a name="12"></a></h2><p>Para melhorar a efic&aacute;cia de circula&ccedil;&atilde;o global do token e evitar que este fique preso nestes subconjuntos, procedeu-se &agrave; altera&ccedil;&atilde;o dos pesos dos n&oacute;s 1, 3,  4, 6, 10, 12, 13, 15, 16 e 20 e adicionaram-se liga&ccedil;&otilde;es estrat&eacute;gicas  entre os n&oacute;s 3 e 16, 15 e 20, 13 e 1.</p><pre class="codeinput">close <span class="string">all</span>
+clear
+
+load(<span class="string">'MarkovChain.mat'</span>);
+
+<span class="comment">% Altera&ccedil;&atilde;o dos pesos dos n&oacute;s na matriz P</span>
+P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; <span class="comment">%N&oacute; 6</span>
+P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; <span class="comment">%N&oacute; 15</span>
+P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; <span class="comment">%N&oacute; 1</span>
+P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; <span class="comment">%N&oacute; 3</span>
+P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; <span class="comment">%N&oacute; 12</span>
+P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; <span class="comment">%N&oacute; 4</span>
+P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; <span class="comment">%N&oacute; 20</span>
+P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; <span class="comment">%N&oacute; 13</span>
+P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; <span class="comment">%N&oacute; 16</span>
+P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; <span class="comment">%N&oacute; 10</span>
+
+<span class="comment">% repetir al&iacute;nea 2.a)</span>
+
+<span class="comment">%valores e vetores pr&oacute;prios da matriz P'</span>
+[vect, val]= eig(P');
+
+<span class="comment">%Determinar o valor pr&oacute;prio mais pr&oacute;ximo de 1</span>
+min= 900;
+
+  <span class="keyword">for</span> i=1:length(val)
+    <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+        min=abs(val(i,i)-1);
+        ind=i;
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+Vp= vect(:,ind);
+
+<span class="comment">% normaliza&ccedil;&atilde;o</span>
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+<span class="comment">%soma das probabilidades tem de ser igual a 1</span>
+Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%distribui&ccedil;&atilde;o de equilibro da cadeia de Markov</span>
+bar(Vp_normalizado);
+
+xlabel(<span class="string">'Estados'</span>);
+xlim([0 21]);
+ylabel(<span class="string">'Probabilidade de estado'</span>);
+title(<span class="string">'Distribui&ccedil;&atilde;o de equil&iacute;brio da cadeia de Markov melhorada'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+<span class="comment">%repetir 2.b)</span>
+
+Po=100; <span class="comment">%Pot&ecirc;ncia da fonte</span>
+
+variancia=10^-2;
+
+M=1000; <span class="comment">%N&uacute;mero de medi&ccedil;&otilde;es</span>
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); <span class="comment">%Fonte-&acirc;ncora dist&acirc;ncia</span>
+
+<span class="comment">% Estimativa da localiza&ccedil;&atilde;o da fonte</span>
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+<span class="comment">% Plot %</span>
+figure
+plot(nodePos(:,2),nodePos(:,3),<span class="string">'o'</span>); hold <span class="string">on</span>
+plot(sourcePos(:,1),sourcePos(:,2),<span class="string">'x'</span>); plot(x(:,1),x(:,2),<span class="string">'s'</span>); hold <span class="string">on</span>
+axis(100*[0 1 0 1]); axis(<span class="string">'square'</span>)
+legend( {<span class="string">'&Acirc;ncoras'</span>,<span class="string">'Fonte'</span>, <span class="string">'Posi&ccedil;&atilde;o estimada da fonte'</span>},<span class="string">'Location'</span>,<span class="string">'southwest'</span> );
+title(<span class="string">'Posi&ccedil;&atilde;o da fonte e das &acirc;ncoras com grafo melhorado'</span>);
+
+<span class="comment">% repetir 2.c)</span>
+
+t=1:200;
+
+ pi_0=zeros(1,20)';
+ pi_0(7)=1;
+ pi_t1=pi_0;
+ soma_pi_1(1)=sum(pi_t1);
+
+ <span class="keyword">for</span> i=1:199
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+ figure
+ plot3(t,estados,pi_t1);
+ xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Grafo Melhorado'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+</pre><img vspace="5" hspace="5" src="lab4_12.png" alt=""> <img vspace="5" hspace="5" src="lab4_13.png" alt=""> <img vspace="5" hspace="5" src="lab4_14.png" alt=""> <h2>Quest&atilde;o 2.d) Ponto de vista de um elemento hostil<a name="14"></a></h2><p>Fizeram-se altera&ccedil;&otilde;es no peso das liga&ccedil;&otilde;es dos n&oacute;s 1 e 6 (jamming selectivo do canal de comunica&ccedil;&otilde;es), de modo dificultar a circula&ccedil;&atilde;o do token e aumentar o seu isolamento nos subconjuntos que o ret&ecirc;m durante per&iacute;odos de tempo mais longos.</p><pre class="codeinput">close <span class="string">all</span>
+clear
+
+load(<span class="string">'MarkovChain.mat'</span>);
+
+<span class="comment">% Altera&ccedil;&atilde;o na matriz P</span>
+P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+
+<span class="comment">% repetir al&iacute;nea 2.a)</span>
+
+<span class="comment">%valores e vetores pr&oacute;prios da matriz P'</span>
+[vect, val]= eig(P');
+
+<span class="comment">%Determinar o valor pr&oacute;prio mais pr&oacute;ximo de 1</span>
+min= 900;
+
+  <span class="keyword">for</span> i=1:length(val)
+    <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+        min=abs(val(i,i)-1);
+        ind=i;
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+Vp= vect(:,ind);
+
+<span class="comment">% normaliza&ccedil;&atilde;o</span>
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+<span class="comment">%soma das probabilidades tem de ser igual a 1</span>
+Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%distribui&ccedil;&atilde;o de equilibro da cadeia de Markov</span>
+bar(Vp_normalizado);
+
+xlabel(<span class="string">'Estados'</span>);
+xlim([0 21]);
+ylabel(<span class="string">'Probabilidade de estado'</span>);
+title(<span class="string">'Distribui&ccedil;&atilde;o de equil&iacute;brio da cadeia de Markov hostil'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+
+<span class="comment">%repetir 2.b)</span>
+
+Po=100; <span class="comment">%Pot&ecirc;ncia da fonte</span>
+
+variancia=10^-2;
+
+M=1000; <span class="comment">%N&uacute;mero de medi&ccedil;&otilde;es</span>
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); <span class="comment">%Fonte-&acirc;ncora dist&acirc;ncia</span>
+
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+<span class="comment">% Plot %</span>
+figure
+plot(nodePos(:,2),nodePos(:,3),<span class="string">'o'</span>); hold <span class="string">on</span>
+plot(sourcePos(:,1),sourcePos(:,2),<span class="string">'x'</span>); plot(x(:,1),x(:,2),<span class="string">'s'</span>); hold <span class="string">on</span>
+axis(100*[0 1 0 1]); axis(<span class="string">'square'</span>)
+legend( {<span class="string">'&Acirc;ncoras'</span>,<span class="string">'Fonte'</span>, <span class="string">'Posi&ccedil;&atilde;o estimada da fonte'</span>},<span class="string">'Location'</span>,<span class="string">'southwest'</span> );
+title(<span class="string">'Posi&ccedil;&atilde;o da fonte e das &acirc;ncoras com elemento hostil'</span>);
+
+<span class="comment">% repetir 2.c)</span>
+
+t=1:800;
+
+ pi_0=zeros(1,20)';
+ pi_0(7)=1;
+ pi_t1=pi_0;
+ soma_pi_1(1)=sum(pi_t1);
+
+ <span class="keyword">for</span> i=1:799
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ <span class="keyword">end</span>
+
+ estados=repmat(1:20,length(t),1);
+
+ figure
+ plot3(t,estados,pi_t1);
+  xlabel(<span class="string">'Tempo (t)'</span>);
+ylabel(<span class="string">'Estados'</span>);
+zlabel(<span class="string">'Probabilidade de cada estado'</span>);
+title(<span class="string">'Grafo hostil'</span>);
+set(gca,<span class="string">'Fontsize'</span>,12);
+</pre><img vspace="5" hspace="5" src="lab4_15.png" alt=""> <img vspace="5" hspace="5" src="lab4_16.png" alt=""> <img vspace="5" hspace="5" src="lab4_17.png" alt=""> <p>Conclu&iacute;-se, destas altera&ccedil;&otilde;es, que a fluidez de circula&ccedil;&atilde;o do token tem influ&ecirc;ncia directa na precis&atilde;o de localiza&ccedil;&atilde;o da fonte, uma vez que ao adicionar o elemento hostil, o tempo que a distribui&ccedil;&atilde;o de probabilidades demora a tender para a distribui&ccedil;&atilde;o de equil&iacute;brio &eacute; muito mais elevado em compara&ccedil;&atilde;o com o do o grafo melhorado e a localiza&ccedil;&atilde;o da fonte &eacute; muito menos precisa do que quando ocorre uma circula&ccedil;&atilde;o eficaz do token.</p><h2>Quest&atilde;o 3.a)<a name="17"></a></h2><p>Nesta quest&atilde;o, introduz-se o m&eacute;todo de Monte Carlo, onde se simula o avan&ccedil;o do token que parte de um estado inicial e avan&ccedil;a aleatoriamente pelo diagrama de estados durante um certo n&uacute;mero de instantes de tempo, anotando-se o historial. Este procedimento, designado por run de Monte Carlo &eacute; repetido um n&uacute;mero suficiente de vezes de forma a assegurar que os resultados t&ecirc;m significado estat&iacute;stico.</p><p>Foi desenvolvida a fun&ccedil;&atilde;o 'simulacao_MonteCarlo' de forma a simular-se para um certo n&uacute;mero de runs (n_runs) e de passos (n_passos) o avan&ccedil;o do token pelo diagrama de estados e guardar essa informa&ccedil;&atilde;o para futura an&aacute;lise.</p><pre class="codeinput"> type(<span class="string">'simulacao_MonteCarlo.m'</span>)
+</pre><pre class="codeoutput">
+function estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,n_estados,mode,estado_inicial)
+%Entradas: P - matriz probabilidade de transi&ccedil;&atilde;o entre estados
+% n_estados - n&uacute;mero total de estados 
+% mode - escolha entre uma inicializa&ccedil;&atilde;o sempre no mesmo estado_inicial para
+% cada run (modo 'c') ou alet&oacute;ria (uniforme)
+%Sa&iacute;das: matriz que guarda o n&uacute;mero total de vezes que o token passou por
+%        cada antena, por passo.
+
+estados_MC=zeros(n_passos, n_estados);
+
+for i=1:n_runs
+    if(mode=='c') %verifica&ccedil;&atilde;o do modo
+        estado_atual=estado_inicial;
+    else 
+        estado_atual=randi(n_estados,1);
+    end
+    
+    for j=1:n_passos
+        %incrementar a matriz para o passo j e a &acirc;ncora onde se encontra
+        estados_MC(j, estado_atual)=estados_MC(j, estado_atual)+1; 
+        %Escolha do estado seguinte
+        estado_atual=find(cumsum(P(estado_atual,:)) &gt; rand,1,'first');
+    end 
+    hh=waitbar(i/n_runs);
+end
+
+close(hh);
+end
+</pre><pre class="codeinput"> clear
+ close <span class="string">all</span>
+
+ load(<span class="string">'MarkovChain.mat'</span>)
+
+ n_runs=5000; <span class="comment">% n&uacute;mero total de runs</span>
+ n_passos=300; <span class="comment">% n&uacute;mero total de passos por run</span>
+
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,<span class="string">'a'</span>,0);
+ <span class="comment">%n&uacute;mero total de passos por estado</span>
+ estados_MC = cumsum(estados_MC);
+
+ estados_MC_norm=zeros(n_passos, 20);
+ <span class="comment">%normaliza&ccedil;&atilde;o da matriz de estados por passo</span>
+ <span class="keyword">for</span> j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ <span class="keyword">end</span>
+ <span class="comment">%Distribui&ccedil;&atilde;o de equ&iacute;librio das probabilidades encontra-se na &uacute;ltima</span>
+ <span class="comment">%linha</span>
+ dist_estados=estados_MC_norm(n_passos,:);
+
+ <span class="comment">%repeti&ccedil;&atilde;o da al&iacute;nea 2.a)</span>
+
+ [vect, val]= eig(P');
+
+ min= 900;
+
+ <span class="keyword">for</span> i=1:length(val)
+     <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+         min=abs(val(i,i)-1);
+         ind=i;
+     <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ Vp= vect(:,ind);
+
+ soma_Vp= sum(Vp);
+ Vp_normalizado = Vp/soma_Vp;
+
+ Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%Compara&ccedil;&atilde;o das distribui&ccedil;&otilde;es de equil&iacute;brio</span>
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel(<span class="string">'Estados'</span>); xlim([0 21]);
+ ylabel(<span class="string">'Probabilidade de estado'</span>); title(<span class="string">'Distribui&ccedil;&otilde;es de equil&iacute;brio'</span>);
+ legend(<span class="string">'Original'</span>,<span class="string">'Monte Carlo'</span>);
+
+ <span class="comment">%Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o</span>
+ t=1:n_passos;
+ estados=repmat(1:20,length(t),1);
+
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'&Acirc;ncoras'</span>); zlabel(<span class="string">'Probabilidade'</span>);
+ title(<span class="string">'Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o de probabilidade'</span>);
+
+ <span class="comment">%-----Compara&ccedil;&atilde;o com o estado mais frequente-----</span>
+
+ estado_inicial=7;
+ <span class="comment">%Obten&ccedil;&atilde;o da matriz passo/estado</span>
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,<span class="string">'c'</span>,estado_inicial);
+
+ estados_MC = cumsum(estados_MC);
+
+ estados_MC_norm=zeros(n_passos, 20);
+
+ <span class="keyword">for</span> j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ <span class="keyword">end</span>
+
+ dist_estados=estados_MC_norm(n_passos,:);
+
+<span class="comment">%Compara&ccedil;&atilde;o das distribui&ccedil;&otilde;es de equil&iacute;brio</span>
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel(<span class="string">'Estados'</span>); xlim([0 21]);
+ ylabel(<span class="string">'Probabilidade de estado'</span>);
+ title(<span class="string">'Distribui&ccedil;&otilde;es de equil&iacute;brio - Token inicial mais frequente'</span>);
+ legend(<span class="string">'Original'</span>,<span class="string">'Monte Carlo'</span>);
+
+ <span class="comment">%Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o</span>
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'&Acirc;ncoras'</span>); zlabel(<span class="string">'Probabilidade'</span>);
+ title(<span class="string">'Evolu&ccedil;&atilde;o da distribui&ccedil;&atilde;o no tempo - Token inicial mais frequente'</span>);
+
+  <span class="comment">%-----Compara&ccedil;&atilde;o com o estado menos frequente-----</span>
+
+ estado_inicial=17;
+
+ n_runs=5000;
+ n_passos=300;
+
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,<span class="string">'c'</span>,estado_inicial);
+
+ estados_MC = cumsum(estados_MC);
+
+ estados_MC_norm=zeros(n_passos, 20);
+
+ <span class="keyword">for</span> j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ <span class="keyword">end</span>
+
+ dist_estados=estados_MC_norm(n_passos,:);
+
+<span class="comment">%Compara&ccedil;&atilde;o das distribui&ccedil;&otilde;es de equil&iacute;brio</span>
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel(<span class="string">'Estados'</span>); xlim([0 21]);
+ ylabel(<span class="string">'Probabilidade de estado'</span>);
+ title(<span class="string">'Distribui&ccedil;&otilde;es de equil&iacute;brio - Token inicial menos frequente'</span>);
+ legend(<span class="string">'Original'</span>,<span class="string">'Monte Carlo'</span>);
+
+ <span class="comment">%Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o</span>
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'&Acirc;ncoras'</span>); zlabel(<span class="string">'Probabilidade'</span>);
+ title(<span class="string">'Evolu&ccedil;&atilde;o da distribui&ccedil;&atilde;o no tempo - Token inicial menos frequente'</span>);
+</pre><img vspace="5" hspace="5" src="lab4_18.png" alt=""> <img vspace="5" hspace="5" src="lab4_19.png" alt=""> <img vspace="5" hspace="5" src="lab4_20.png" alt=""> <img vspace="5" hspace="5" src="lab4_21.png" alt=""> <img vspace="5" hspace="5" src="lab4_22.png" alt=""> <img vspace="5" hspace="5" src="lab4_23.png" alt=""> <p>A partir da primeira figura, podemos confirmar que as distribui&ccedil;&otilde;es de equil&iacute;brio obtidas pelo m&eacute;todo de Monte Carlo s&atilde;o pr&oacute;ximas das determinadas na sec&ccedil;&atilde;o 2.</p><p>De forma semelhante &agrave; al&iacute;nea 2.c), a partir do m&eacute;todo de Monte Carlo, simulou-se a evolu&ccedil;&atilde;o das probabilidades dos diversos estados da cadeira de Markov ao longo do tempo para diferentes condi&ccedil;&otilde;es iniciais.</p><p>Pode-se observar que, quando o token come&ccedil;a num estado central, como o estado 7, este tem mais facilidade em rapidamente circular pela rede e atingir a probabilidade de equil&iacute;brio, ou seja, tem um elevado ritmo de converg&ecirc;ncia. O mesmo n&atilde;o se verifica quando o token inicia numa zona que o ret&eacute;m, por exemplo, o estado 17. Neste caso, o ritmo de converg&ecirc;ncia &eacute; bastante inferior e as probabilidades de equil&iacute;brio atingidas s&atilde;o diferentes das originais.</p><p>3.a) Ponto de vista da equipa/elemento hostil</p><pre class="codeinput"> clear
+
+ load(<span class="string">'MarkovChain.mat'</span>)
+
+ P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; <span class="comment">%N&oacute; 6</span>
+ P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; <span class="comment">%N&oacute; 15</span>
+ P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; <span class="comment">%N&oacute; 1</span>
+ P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; <span class="comment">%N&oacute; 3</span>
+ P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; <span class="comment">%N&oacute; 12</span>
+ P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; <span class="comment">%N&oacute; 4</span>
+ P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; <span class="comment">%N&oacute; 20</span>
+ P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; <span class="comment">%N&oacute; 13</span>
+ P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; <span class="comment">%N&oacute; 16</span>
+ P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; <span class="comment">%N&oacute; 10</span>
+
+ n_runs=5000;
+ n_passos=300;
+
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,<span class="string">'a'</span>,0);
+
+ estados_MC = cumsum(estados_MC);
+
+ estados_MC_norm=zeros(n_passos, 20);
+
+ <span class="keyword">for</span> j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ <span class="keyword">end</span>
+
+ dist_estados=estados_MC_norm(n_passos,:);
+
+ <span class="comment">%repeti&ccedil;&atilde;o da al&iacute;nea 2.a)</span>
+
+ [vect, val]= eig(P');
+
+min= 900;
+
+  <span class="keyword">for</span> i=1:length(val)
+    <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+        min=abs(val(i,i)-1);
+        ind=i;
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+Vp= vect(:,ind);
+
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%Compara&ccedil;&atilde;o das distribui&ccedil;&otilde;es de equil&iacute;brio</span>
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel(<span class="string">'Estados'</span>); xlim([0 21]);
+ ylabel(<span class="string">'Probabilidade de estado'</span>);
+ title(<span class="string">'Distribui&ccedil;&otilde;es de equil&iacute;brio - Grafo melhorado'</span>);
+ legend(<span class="string">'Original'</span>,<span class="string">'Monte Carlo'</span>);
+
+ <span class="comment">%Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o</span>
+ t=1:n_passos;
+ estados=repmat(1:20,length(t),1);
+
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'&Acirc;ncoras'</span>); zlabel(<span class="string">'Probabilidade'</span>);
+ title(<span class="string">'Evolu&ccedil;&atilde;o da distribui&ccedil;&atilde;o no tempo - Grafo melhorado'</span>);
+
+ <span class="comment">% 3.a) Ponto de vista de um elemento hostil</span>
+
+ clear <span class="string">P</span>
+ load(<span class="string">'MarkovChain.mat'</span>)
+
+ P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+ P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,<span class="string">'a'</span>,0);
+
+ estados_MC = cumsum(estados_MC);
+
+ estados_MC_norm=zeros(n_passos, 20);
+
+ <span class="keyword">for</span> j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ <span class="keyword">end</span>
+
+ dist_estados=estados_MC_norm(n_passos,:);
+
+ <span class="comment">%al&iacute;nea 2.a)</span>
+
+ [vect, val]= eig(P');
+
+ min= 900;
+
+ <span class="keyword">for</span> i=1:length(val)
+     <span class="keyword">if</span>(abs(val(i,i)-1))&lt;min
+         min=abs(val(i,i)-1);
+         ind=i;
+     <span class="keyword">end</span>
+ <span class="keyword">end</span>
+
+ Vp= vect(:,ind);
+
+ soma_Vp= sum(Vp);
+ Vp_normalizado = Vp/soma_Vp;
+ Vp_normalizado_total = sum(Vp_normalizado);
+
+<span class="comment">%Compara&ccedil;&atilde;o das distribui&ccedil;&otilde;es de equil&iacute;brio</span>
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel(<span class="string">'Estados'</span>); xlim([0 21]);
+ ylabel(<span class="string">'Probabilidade de estado'</span>);
+ title(<span class="string">'Distribui&ccedil;&otilde;es de equil&iacute;brio - Grafo hostil'</span>);
+ legend(<span class="string">'Original'</span>,<span class="string">'Monte Carlo'</span>);
+
+ <span class="comment">%Evolu&ccedil;&atilde;o no tempo da distribui&ccedil;&atilde;o</span>
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'&Acirc;ncoras'</span>); zlabel(<span class="string">'Probabilidade'</span>);
+ title(<span class="string">'Evolu&ccedil;&atilde;o da distribui&ccedil;&atilde;o no tempo - Grafo hostil'</span>);
+</pre><img vspace="5" hspace="5" src="lab4_24.png" alt=""> <img vspace="5" hspace="5" src="lab4_25.png" alt=""> <img vspace="5" hspace="5" src="lab4_26.png" alt=""> <img vspace="5" hspace="5" src="lab4_27.png" alt=""> <p>A partir do m&eacute;todo de Monte Carlo (MC) tamb&eacute;m se simulou as variantes do grafo da al&iacute;nea 2.d). Para a cadeia de Markov melhorada a distribui&ccedil;&atilde;o de equil&iacute;brio obtida &eacute; ainda mais pr&oacute;xima da original do que a determinada anteriormente, tal pode ser explicado pelo facto de nesta o vetor de probabilidade limite ser pr&oacute;ximo de uma distribui&ccedil;ao uniforme.</p><p>Relativamente aos ritmos de converg&ecirc;ncia, conclui-se que estes s&atilde;o mais lentos para o m&eacute;todo de MC. Para a cadeia de Markov com pior circula&ccedil;&atilde;o, &eacute; bastante mais lento pois nem chega a atingir a distribui&ccedil;&atilde;o de equil&iacute;brio dentro da janela de tempo.</p><p>Desta forma, pode-se concluir que o m&eacute;todo de MC &eacute; bastante preciso para uma quantidade elevada de runs.</p><h2>Quest&atilde;o 3.b)<a name="24"></a></h2><p>Nesta quest&atilde;o, estimou-se o erro da posi&ccedil;&atilde;o da fonte ao longo do tempo a partir da fun&ccedil;&atilde;o 'erro_MonteCarlo.m'. Esta constr&oacute;i as matrizes A e b, resolve o problema de m&iacute;nimos quadr&aacute;ticos a partir do algoritmo RLS e calcula o erro atrav&eacute;s da posi&ccedil;&atilde;o estimada da fonte em cada passo.</p><pre class="codeinput"> type(<span class="string">'erro_MonteCarlo.m'</span>)
+</pre><pre class="codeoutput">
+function [erro,x_pos,x_est]=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,...
+                              d,P,estado_inicial,mode,mode_mov,lambda)
+
+erro=zeros(n_passos,1);
+
+for i=1:n_runs
+    A=zeros(n_passos,4);
+    b=zeros(n_passos,1);
+    n=randn(n_passos,1)*sqrt(variancia);
+    x = sourcePos';
+    % Escolha do modo de uma condi&ccedil;&atilde;o inicial defenida ou random uniforme
+    if(mode=='c')
+        ancora=estado_inicial;
+    else 
+        ancora=randi(20,1);
+    end
+    % Escolha do modo da fonte em movimento,'fonte_movimento', ou fonte
+    % parada e dependendo disso aplicar ou n&atilde;o o valor de Lambda
+    if strcmp(mode_mov,'fonte_movimento')
+           rlsPar=struct('lam',lambda);
+    else 
+           rlsPar=struct('lam',1);
+    end
+    
+    for j= 1:n_passos
+        %Verificar se a fonte est&aacute; parada ou em movimento e dependendo
+        %disso mudar as coordenadas da fonte em cada passo
+        if strcmp(mode_mov,'fonte_movimento')
+           x=x+[-0.02;0.02];
+        end
+        Pi=(Po/(d(ancora))^2)*exp(n(j));
+        ai = nodePos(ancora,2:3)';
+        
+        %constru&ccedil;&atilde;o matriz A e b
+        A(j,1)=-2*Pi*ai(1);
+        A(j,2)=-2*Pi*ai(2);
+        A(j,3)=-1;
+        A(j,4)=Pi;
+        b(j)=-Pi*(norm(ai))^2;
+        
+        [~,w,rlsPar]=qrrls(A(j,:),b(j),rlsPar);
+        erro(j)=erro(j)+norm(x-w(1:2));
+        
+       ancora = find(cumsum(P(ancora, :))&gt;rand,1,'first');
+    end
+    hh=waitbar(i/n_runs);
+end
+    close(hh);
+end
+</pre><pre class="codeinput"> clear
+ close <span class="string">all</span>
+
+ load(<span class="string">'MarkovChain.mat'</span>)
+ n_passos=200;
+ n_runs=800;
+
+ Po=100; <span class="comment">%Pot&ecirc;ncia da fonte</span>
+ variancia=10^-2;
+
+ estado_inicial=7;
+
+ a=[nodePos(:,2),nodePos(:,3)]';
+ D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+ d=D(1,3:end); <span class="comment">%Fonte-&acirc;ncora dist&acirc;ncia</span>
+
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,<span class="string">'c'</span>,<span class="string">'a'</span>,0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+
+ figure(1)
+ plot(t, erro_med);
+ hold <span class="string">on</span>
+
+ <span class="comment">% Zona 1 longe da fonte</span>
+
+ estado_inicial=15;
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,<span class="string">'c'</span>,<span class="string">'a'</span>,0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+
+ figure(1)
+ plot(t, erro_med);
+ hold <span class="string">on</span>
+
+ <span class="comment">% Zona 2 perto da fonte</span>
+
+  estado_inicial=10;
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,<span class="string">'c'</span>,<span class="string">'a'</span>,0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+
+ figure(1)
+ plot(t, erro_med);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'Erro'</span>);
+ title(<span class="string">'Erro de estimativa de posi&ccedil;&atilde;o da fonte'</span>);
+ legend(<span class="string">'Posi&ccedil;&atilde;o Central'</span>,<span class="string">'Zona 1 - Longe da Fonte'</span>, <span class="string">'Zona 2 - Perto da fonte'</span>);
+
+ <span class="comment">% Vers&atilde;o Melhorada</span>
+
+ P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; <span class="comment">%N&oacute; 6</span>
+ P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; <span class="comment">%N&oacute; 15</span>
+ P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; <span class="comment">%N&oacute; 1</span>
+ P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; <span class="comment">%N&oacute; 3</span>
+ P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; <span class="comment">%N&oacute; 12</span>
+ P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; <span class="comment">%N&oacute; 4</span>
+ P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; <span class="comment">%N&oacute; 20</span>
+ P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; <span class="comment">%N&oacute; 13</span>
+ P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; <span class="comment">%N&oacute; 16</span>
+ P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; <span class="comment">%N&oacute; 10</span>
+
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,0,<span class="string">'a'</span>,<span class="string">'a'</span>,0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+
+ figure(2)
+ plot(t, erro_med);
+ hold <span class="string">on</span>
+
+ <span class="comment">% Vers&atilde;o Piorada</span>
+
+ clear <span class="string">P</span>
+
+ load(<span class="string">'MarkovChain.mat'</span>);
+
+ P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+ P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,0,<span class="string">'a'</span>,<span class="string">'a'</span>,0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+
+ figure(2)
+ plot(t, erro_med);
+ xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'Erro'</span>);
+ title(<span class="string">'Erro de estimativa de posi&ccedil;&atilde;o da fonte'</span>);
+ legend(<span class="string">'Melhor circula&ccedil;&atilde;o'</span>,<span class="string">'Pior circula&ccedil;&atilde;o'</span>);
+</pre><img vspace="5" hspace="5" src="lab4_28.png" alt=""> <img vspace="5" hspace="5" src="lab4_29.png" alt=""> <p>A partir dos gr&aacute;ficos obtidos, pode-se verificar, que quando se inicia o token numa posi&ccedil;&atilde;o central, por exemplo &acirc;ncora 7, o erro diminui exponencialmente nos primeiros instantes. No entanto, neste caso, converge para um valor diferente de 0, ou seja a estima&ccedil;&atilde;o da localiza&ccedil;&atilde;o da fonte n&atilde;o &eacute; exata.</p><p>Do mesmo modo, determinou-se a situa&ccedil;&atilde;o em que se inicia o token no estado 15, que &eacute; uma &acirc;ncora pertencente a um subconjunto de estados que tende a reter o mesmo e que se encontra longe da fonte. Como era de esperar neste caso, o erro leva mais tempo a aproximar-se da fonte, no entanto, converge aproximadamente para o mesmo valor que se verificou na situa&ccedil;&atilde;o anterior.</p><p>Por outro lado, quando se inicia o token na &acirc;ncora 10, que tamb&eacute;m pertence a uma zona que tende a reter o mesmo, no entanto bastante mais pr&oacute;xima da fonte, este caso, relativamente &agrave;s duas outras situa&ccedil;&otilde;es, &eacute; o mais r&aacute;pido a convergir e converge para um erro=0.</p><p>A partir da segunda figura, conclu&iacute;mos que as variantes do grafo da al&iacute;nea 2.d) influenciam a evolu&ccedil;&atilde;o do erro. Tal como era esperado, o grafo melhorado no sentido da equipa converge mais rapidamente para a posi&ccedil;&atilde;o exata da fonte, pois o token circula de forma eficaz por todo o grafo.</p><p>Para o grafo onde se dificulta a circula&ccedil;&atilde;o do token, verifica-se que este converge para um erro bastante superior a 0, uma vez que n&atilde;o consegue chegar a todas as antenas, logo dificulta a estimativa exata da posi&ccedil;&atilde;o da fonte.</p><h2>Quest&atilde;o 3.c)<a name="28"></a></h2><p>Nesta al&iacute;nea, a fonte movimenta-se em simult&acirc;neo com a transi&ccedil;&atilde;o do token. Desta forma, introduz-se um factor de esquecimente 0&lt; <img src="lab4_eq07657233533591063549.png" alt="$\lambda$"> <img src="lab4_eq08702962754466044616.png" alt="$\leq$"> 1 no algoritmo RLS, para que na fun&ccedil;&atilde;o de custo se d&ecirc; mais peso aos &uacute;ltimos termos do que os primeiros.</p><pre class="codeinput">clear
+ close <span class="string">all</span>
+
+ load(<span class="string">'MarkovChain.mat'</span>)
+ n_passos=1200;
+ n_runs=300;
+
+ Po=100; <span class="comment">%Pot&ecirc;ncia da fonte</span>
+ variancia=10^-2;
+ lambda_set=[1 0.3 0.85];
+
+ a=[nodePos(:,2),nodePos(:,3)]';
+ D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+ d=D(1,3:end); <span class="comment">%Fonte-&acirc;ncora dist&acirc;ncia</span>
+
+ <span class="keyword">for</span> i=1:length(lambda_set)
+
+     erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,<span class="keyword">...</span>
+                          sourcePos,d,P,0,<span class="string">'a'</span>,<span class="string">'fonte_movimento'</span>,lambda_set(i));
+     erro_med=erro./n_runs;
+     t=1:n_passos;
+
+     figure(1)
+     plot(t, erro_med);
+     hold <span class="string">on</span>
+ <span class="keyword">end</span>
+
+
+figure(1)
+xlabel(<span class="string">'t [s]'</span>); ylabel(<span class="string">'Erro'</span>);
+legend(<span class="string">'\lambda=1'</span>,<span class="string">'\lambda=0.3'</span>,<span class="string">'\lambda=0.85'</span>);
+title(<span class="string">'Evolu&ccedil;&atilde;o do erro para uma fonte em movimento'</span>)
+</pre><img vspace="5" hspace="5" src="lab4_30.png" alt=""> <div><ul><li>Para <img src="lab4_eq07657233533591063549.png" alt="$\lambda$">=1, pode-se observar que o erro diminui exponencialmente numa primeira parte, chegando a 0 por uns instantes. No entanto, a partir de um certo n&uacute;mero de transi&ccedil;&otilde;es come&ccedil;a a aumentar, devido ao factor de esquecimento dar o mesmo peso a todas as medi&ccedil;&otilde;es. Com a fonte em movimento, &eacute; necess&aacute;rio introduzir um <img src="lab4_eq07657233533591063549.png" alt="$\lambda$"> de forma a dar-se mais peso &agrave;s medi&ccedil;&otilde;es mais recentes em compara&ccedil;&atilde;o com as antigas.</li></ul></div><div><ul><li>Para um valor baixo de <img src="lab4_eq07657233533591063549.png" alt="$\lambda$">, por exemplo 0.3, o algoritmo d&aacute; import&acirc;ncia apenas &agrave; &uacute;ltima medi&ccedil;&atilde;o, praticamente ignorando as medi&ccedil;&otilde;es anteriores. Como se pode verificar, esta estrat&eacute;gia tamb&eacute;m n&atilde;o conduz a uma boa estimativa da fonte. &Eacute; necess&aacute;rio encontrar um equil&iacute;brio entre o peso das medi&ccedil;&otilde;es actuais e as anteriores.</li></ul></div><div><ul><li>De seguida, testaram-se v&aacute;rios valores de <img src="lab4_eq07657233533591063549.png" alt="$\lambda$"> de forma a encontrar um valor que melhor estimasse a posi&ccedil;&atilde;o da fonte para todas as transi&ccedil;&otilde;es, obtendo-se <img src="lab4_eq07657233533591063549.png" alt="$\lambda$">=0.85.</li></ul></div><p>Por fim, &eacute; necess&aacute;rio ter em aten&ccedil;&atilde;o que o erro pode ser maior ou menor tendo em conta a traject&oacute;ria da fonte e se esta se aproxima ou afasta das antenas.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 4º Laboratório de Modelação e Simulação 2019/20
+% Detecção de hotspots WiFi
+%
+% Alice Rosa, Nº 90007 
+%
+% Beatriz Pereira, Nº 90029 
+%
+% Grupo 16, Turno 3ª feira às 9h00 
+%% Questão 2.a)
+%
+% Nesta questão, decompôs-se a matriz transposta de probabilidades de transição
+% entre estados, P', em valores próprios e vetores próprios. De seguida, obteve-se a 
+% distribuição de equilíbrio da cadeia de Markov
+% por normalização do vetor próprio associado ao valor próprio mais próximo
+% de 1.
+%%
+clear;
+close all;
+
+load('MarkovChain.mat');
+
+%valores e vetores próprios da matriz P'
+[vect, val]= eig(P');
+
+%Determinar o valor próprio mais próximo de 1
+min= 900;
+
+  for i=1:length(val) 
+    if(abs(val(i,i)-1))<min
+        min=abs(val(i,i)-1);
+        ind=i;
+    end
+  end
+% Associar o vetor próprio a esse índice
+Vp= vect(:,ind);
+
+% normalização do vetor próprio
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+%soma das probabilidades tem de ser igual a 1
+Vp_normalizado_total = sum(Vp_normalizado);
+
+%distribuição de equilibro da cadeia de Markov
+bar(Vp_normalizado);
+
+xlabel('Estados');
+xlim([0 21]);
+ylabel('Probabilidade de estado');
+title('Distribuição de equilíbrio da cadeia de Markov');
+set(gca,'Fontsize',12);
+%%
+% Por análise do gráfico da distribuição de equilíbrio da cadeira de
+% Markov, conclui-se que os estados mais prováveis são o 7 e o 19
+% (P=0.09649), sendo que estes correspondem, também, aos nós do grafo com
+% maior número de ligações e os estados menos prováveis são o 8 e 17 (P=0.01072). 
+
+%% Questão 2.b)
+%
+% Tendo em conta a distribuição de equilíbrio da cadeia de Markov da alínea
+% anterior, resolveu-se uma versão ponderada do problema de mínimos 
+% quadráticos, para um M suficientemente longo de medições arbitrário, 
+% de modo a determinar a posição da fonte estimada.
+%%
+Po=100; %Potência da fonte
+
+variancia=10^-2;
+
+M=1000; %Número de medições
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); %Fonte-âncora distância
+
+% Posição estimada da fonte
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+% Plot 
+figure(2)
+plot(nodePos(:,2),nodePos(:,3),'o'); hold on
+plot(sourcePos(:,1),sourcePos(:,2),'x'); plot(x(:,1),x(:,2),'s'); hold on
+axis(100*[0 1 0 1]); axis('square')
+legend( {'Âncoras','Fonte', 'Posição estimada da fonte'},'Location','southwest' );
+title('Posição da fonte e das âncoras');
+
+% Função que estima a posição da fonte
+type ('sourcePos_estimativa');
+%%
+% Conclui-se que, para um número elevado de medições, o método dos mínimos
+% quadrados fornece uma boa estimativa para a posição da fonte, sendo que o
+% pequeno desvio apresentado deve-se à presença de ruído.
+
+%% Questão 2.c)
+%
+% Fez-se a simulação da evolução das probabilidades dos diversos estados da cadeia de 
+% Markov, ao longo do tempo, para diferentes condições iniciais de $\pi$(0).
+%
+% A evolução das probabilidades dos estados de uma cadeia de Markov,
+% entre dois instantes de tempo consecutivos, é dada por
+% $\pi'(t+1)=\pi'(t)P$.
+%%
+
+clearvars -except Vp_normalizado;
+close all;
+
+load('MarkovChain.mat');
+
+% REPLACE_WITH_DASH_DASH- 1ª Condição Inicial REPLACE_WITH_DASH_DASH-
+
+ t=1:200; 
+ 
+ pi_0=zeros(1,20)';
+ 
+ % Inicialização no estado 7
+ pi_0(7)=1;
+ pi_t1=pi_0;
+ 
+ %soma de todas as entradas do vetor pi
+ soma_pi_1(1)=sum(pi_t1);
+ 
+ % evolução das probabilidades dos estados de uma cadeia de Markov
+ for i=1:199
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+figure(1)
+plot3(t,estados,pi_t1);
+xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Condição inicial no centro do grafo');
+set(gca,'Fontsize',12);
+ 
+ 
+ figure(2) 
+ plot(t,soma_pi_1);
+ ylim([0.95 1.05]);
+ xlabel('Tempo (t)');
+ ylabel('Soma das probabilidades');
+ title('Soma das entradas \pi(t)');
+ set(gca,'Fontsize',12);
+ 
+ % REPLACE_WITH_DASH_DASH- 2ª Condição Inicial REPLACE_WITH_DASH_DASH-
+ 
+ pi_0=zeros(1,20)';
+ 
+ % Inicialização no estado 17
+ pi_0(17)=1;
+ pi_t2=pi_0;
+ 
+ soma_pi_2(1)=sum(pi_t2); %soma das probabilidades
+ 
+ % evolução das probabilidades dos estados de uma cadeia de Markov
+ for i=1:199
+     pi_t2(:,i+1)=pi_0'*(P^(i));
+     soma_pi_2(i+1)=sum(pi_t2(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+figure(3)
+plot3(t,estados,pi_t2);
+xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Condição inicial num estado que retém o token');
+set(gca,'Fontsize',12);
+ 
+ 
+ figure(4) 
+ plot(t,soma_pi_2);
+ ylim([0.95 1.05]);
+ xlabel('Tempo (t)');
+ ylabel('Soma das probabilidades');
+ title('Soma das entradas \pi(t)');
+ set(gca,'Fontsize',12);
+ 
+ % REPLACE_WITH_DASH_DASH- 3ª Condição Inicial REPLACE_WITH_DASH_DASH-
+ 
+ pi_0=zeros(1,20)';
+ %distribuição inicial uniforme 
+ pi_0(:,1)=1/20;
+ pi_t3=pi_0;
+ 
+ soma_pi_3(1)=sum(pi_t3); %soma das probabilidades
+
+ % evolução das probabilidades dos estados de uma cadeia de Markov
+ for i=1:199
+     pi_t3(:,i+1)=pi_0'*(P^(i));
+     soma_pi_3(i+1)=sum(pi_t3(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+figure(5)
+plot3(t,estados,pi_t3);
+xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Distribuição inicial uniforme');
+set(gca,'Fontsize',12);
+ 
+ figure(6) 
+ plot(t,soma_pi_3);
+ ylim([0.95 1.05]);
+ xlabel('Tempo (t)');
+ ylabel('Soma das probabilidades');
+ title('Soma das entradas \pi(t)');
+ set(gca,'Fontsize',12);
+ 
+ % REPLACE_WITH_DASH_DASH- 4ª Condição Inicial REPLACE_WITH_DASH_DASH-
+ 
+ %distribuição inicial em equilibrio
+ pi_0= Vp_normalizado;
+ pi_t4=pi_0;
+ 
+ soma_pi_4(1)=sum(pi_t4); %soma das probabilidades
+ 
+ for i=1:199
+     pi_t4(:,i+1)=pi_0'*(P^(i));
+     soma_pi_4(i+1)=sum(pi_t4(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+figure(7)
+plot3(t,estados,pi_t4);
+xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Distribuição inicial em equilíbrio');
+set(gca,'Fontsize',12);
+ 
+ 
+ figure(8) 
+ plot(t,soma_pi_4);
+ ylim([0.95 1.05]);
+ xlabel('Tempo (t)');
+ ylabel('Soma das probabilidades');
+ title('Soma das entradas \pi(t)');
+ set(gca,'Fontsize',12); 
+ %%
+ % Simulou-se a evolução das probabilidades dos diversos estados da cadeia de 
+ % Markov, ao longo do tempo, para quatro condições iniciais diferentes de $\pi(0)$.
+ % 
+ % Em primeiro lugar, incializou-se o token na âncora 7, pois esta 
+ % é uma âncora central do grafo com quatro ligações todas com igual probabilidade (P=0.25).
+ % Verifica-se que as probabilidades de todos os estados tendem para o equilíbrio.
+ %
+ % De seguida, inicializou-se o token num dos subconjuntos em que este fica
+ % retido durante um longo período de tempo por ter menos probabilidade de sair
+ % do que ficar, portanto escolheu-se a âncora 17, que
+ % corresponde, também, a um dos estados com menor probabilidade. Uma vez que
+ % se inicializa o token dentro deste subconjunto e este só têm 20% 
+ % probabilidade de sair, verifica-se, por observação do gráfico, que o tempo de estabelecimento é 
+ % superior ao caso anterior, isto é, as probabilidades dos estados demoram 
+ % mais tempo a atingir o equilíbrio. 
+ %
+ % Como terceiro caso, escolheu-se um vetor de probabilidades com
+ % distribuição inicial uniforme. Daqui, uma vez que o token tem a mesma probabilidade
+ % de começar em qualquer uma das âncoras, este corresponde ao caso médio dos
+ % dois anteriores.
+ %
+ % Por último, escolheu-se um vetor de probabilidades com
+ % distribuição inicial em equilibrio, em que este é igual ao vetor de 
+ % vetores próprios correspondente à
+ % distribuição de equilíbro da cadeia de Markov (decomposição em valores 
+ % e vetores próprios). Uma vez que o sistema se mantém 
+ % nesse estado indefinidamente, comprova-se que a distribuição do sistema 
+ % tende sempre para a posição de equilíbrio.
+ 
+ %% Questão 2.d)
+ clear;
+ close all;
+ 
+ MarkovChainDraw
+ title('Grafo de comunicações entre os agentes');
+ %%
+ % Através da análise do grafo de comunicações entre agentes, das 
+ % respetivas probabilidades de transição entre os vários estados e da
+ % distribuição de equilíbrio, identificaram-se dois subconjuntos de
+ % estados da cadeia onde o token pode ficar a circular durante relativamente 
+ % longos intervalos de tempo.
+ %
+ % Subconjunto 1: 5, 6, 11, 15.
+ %
+ % Subconjunto 2: 8, 9, 10, 12, 17.
+ %
+ % O token tem tendência a ficar preso nestes subconjuntos durante períodos
+ % mais longos, pois em ambos os casos só há uma forma de saída e esta
+ % apresenta uma probabilidade inferiror às ligações de entrada. O
+ % subconjunto 1, apresenta uma probabilidade de sair de 20%, apenas a
+ % partir do nó 6, enquanto a probabilidade de se manter é de 80%. O mesmo
+ % acontece no subconjunto 2, em o token apresenta 20% de probabilidade de
+ % sair pelo nó 12 e 80% de ficar e se deslocar para o nó 8 ou 10.
+ %
+ % Tal como se verificou na alínea anterior, se o token for inicializado
+ % num destes subconjuntos ou entrar num deles, irá tender para o equilíbrio, 
+ % mas o seu tempo de convergência será maior.
+ %% Questão 2.d) Ponto de vista da equipa
+ % Para melhorar a eficácia de circulação global do token e evitar que
+ % este fique preso nestes subconjuntos, procedeu-se à alteração dos pesos dos nós 1, 3,
+ %  4, 6, 10, 12, 13, 15, 16 e 20 e adicionaram-se ligações estratégicas
+ %  entre os nós 3 e 16, 15 e 20, 13 e 1.
+ %%
+close all 
+clear
+
+load('MarkovChain.mat');
+
+% Alteração dos pesos dos nós na matriz P
+P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; %Nó 6
+P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; %Nó 15
+P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; %Nó 1
+P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; %Nó 3
+P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; %Nó 12
+P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; %Nó 4
+P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; %Nó 20
+P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; %Nó 13
+P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; %Nó 16
+P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; %Nó 10
+
+% repetir alínea 2.a)
+
+%valores e vetores próprios da matriz P'
+[vect, val]= eig(P');
+
+%Determinar o valor próprio mais próximo de 1
+min= 900;
+
+  for i=1:length(val) 
+    if(abs(val(i,i)-1))<min
+        min=abs(val(i,i)-1);
+        ind=i;
+    end
+  end
+
+Vp= vect(:,ind);
+
+% normalização 
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+%soma das probabilidades tem de ser igual a 1
+Vp_normalizado_total = sum(Vp_normalizado);
+
+%distribuição de equilibro da cadeia de Markov
+bar(Vp_normalizado);
+
+xlabel('Estados');
+xlim([0 21]);
+ylabel('Probabilidade de estado');
+title('Distribuição de equilíbrio da cadeia de Markov melhorada');
+set(gca,'Fontsize',12);
+
+%repetir 2.b)
+
+Po=100; %Potência da fonte
+
+variancia=10^-2;
+
+M=1000; %Número de medições
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); %Fonte-âncora distância
+
+% Estimativa da localização da fonte
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+% Plot %
+figure
+plot(nodePos(:,2),nodePos(:,3),'o'); hold on
+plot(sourcePos(:,1),sourcePos(:,2),'x'); plot(x(:,1),x(:,2),'s'); hold on
+axis(100*[0 1 0 1]); axis('square')
+legend( {'Âncoras','Fonte', 'Posição estimada da fonte'},'Location','southwest' );
+title('Posição da fonte e das âncoras com grafo melhorado');
+
+% repetir 2.c)
+
+t=1:200; 
+ 
+ pi_0=zeros(1,20)';
+ pi_0(7)=1;
+ pi_t1=pi_0;
+ soma_pi_1(1)=sum(pi_t1);
+ 
+ for i=1:199
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+ figure
+ plot3(t,estados,pi_t1);
+ xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Grafo Melhorado');
+set(gca,'Fontsize',12);
+ 
+
+%% Questão 2.d) Ponto de vista de um elemento hostil
+% Fizeram-se alterações no peso das ligações dos nós 1 e 6 (jamming
+% selectivo do canal de comunicações), de modo dificultar a circulação 
+% do token e aumentar o seu isolamento nos subconjuntos que o retêm durante
+% períodos de tempo mais longos.
+%%
+close all
+clear
+
+load('MarkovChain.mat');
+
+% Alteração na matriz P
+P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+
+% repetir alínea 2.a)
+
+%valores e vetores próprios da matriz P'
+[vect, val]= eig(P');
+
+%Determinar o valor próprio mais próximo de 1
+min= 900;
+
+  for i=1:length(val) 
+    if(abs(val(i,i)-1))<min
+        min=abs(val(i,i)-1);
+        ind=i;
+    end
+  end
+
+Vp= vect(:,ind);
+
+% normalização 
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+
+%soma das probabilidades tem de ser igual a 1
+Vp_normalizado_total = sum(Vp_normalizado);
+
+%distribuição de equilibro da cadeia de Markov
+bar(Vp_normalizado);
+
+xlabel('Estados');
+xlim([0 21]);
+ylabel('Probabilidade de estado');
+title('Distribuição de equilíbrio da cadeia de Markov hostil');
+set(gca,'Fontsize',12);
+
+%repetir 2.b)
+
+Po=100; %Potência da fonte
+
+variancia=10^-2;
+
+M=1000; %Número de medições
+
+a=[nodePos(:,2),nodePos(:,3)]';
+
+D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+d=D(1,3:end); %Fonte-âncora distância
+
+x=sourcePos_estimativa(M,Po,variancia,Vp_normalizado,a,d);
+
+% Plot %
+figure
+plot(nodePos(:,2),nodePos(:,3),'o'); hold on
+plot(sourcePos(:,1),sourcePos(:,2),'x'); plot(x(:,1),x(:,2),'s'); hold on
+axis(100*[0 1 0 1]); axis('square')
+legend( {'Âncoras','Fonte', 'Posição estimada da fonte'},'Location','southwest' );
+title('Posição da fonte e das âncoras com elemento hostil');
+
+% repetir 2.c)
+
+t=1:800; 
+ 
+ pi_0=zeros(1,20)';
+ pi_0(7)=1;
+ pi_t1=pi_0;
+ soma_pi_1(1)=sum(pi_t1);
+ 
+ for i=1:799
+     pi_t1(:,i+1)=pi_0'*(P^(i));
+     soma_pi_1(i+1)=sum(pi_t1(:,i+1));
+ end
+ 
+ estados=repmat(1:20,length(t),1);
+ 
+ figure
+ plot3(t,estados,pi_t1);
+  xlabel('Tempo (t)');
+ylabel('Estados');
+zlabel('Probabilidade de cada estado');
+title('Grafo hostil');
+set(gca,'Fontsize',12);
+
+%%
+% Concluí-se, destas alterações, que a fluidez de circulação do token tem  
+% influência directa na precisão de localização da fonte, uma vez que ao
+% adicionar o elemento hostil, o tempo que a distribuição de probabilidades 
+% demora a tender para a distribuição de equilíbrio é muito mais elevado em 
+% comparação com o do o grafo melhorado e a localização da fonte é muito
+% menos precisa do que quando ocorre uma circulação eficaz do token.
+
+ %% Questão 3.a)
+ % Nesta questão, introduz-se o método de Monte Carlo, onde se simula o
+ % avanço do token que parte de um estado inicial e avança aleatoriamente
+ % pelo diagrama de estados durante um certo número de instantes de tempo,
+ % anotando-se o historial. Este procedimento, designado por run de Monte
+ % Carlo é repetido um número suficiente de vezes de forma a assegurar que
+ % os resultados têm significado estatístico. 
+ %
+ % Foi desenvolvida a função 'simulacao_MonteCarlo' de forma a simular-se
+ % para um certo número de runs (n_runs) e de passos (n_passos) o avanço do
+ % token pelo diagrama de estados e guardar essa informação para futura
+ % análise.
+ %%
+ type('simulacao_MonteCarlo.m')
+ %%
+ 
+ clear 
+ close all
+ 
+ load('MarkovChain.mat')
+ 
+ n_runs=5000; % número total de runs
+ n_passos=300; % número total de passos por run
+ 
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,'a',0);
+ %número total de passos por estado 
+ estados_MC = cumsum(estados_MC);
+ 
+ estados_MC_norm=zeros(n_passos, 20);
+ %normalização da matriz de estados por passo
+ for j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ end
+ %Distribuição de equílibrio das probabilidades encontra-se na última
+ %linha 
+ dist_estados=estados_MC_norm(n_passos,:);
+ 
+ %repetição da alínea 2.a)
+ 
+ [vect, val]= eig(P');
+ 
+ min= 900;
+ 
+ for i=1:length(val)
+     if(abs(val(i,i)-1))<min
+         min=abs(val(i,i)-1);
+         ind=i;
+     end
+ end
+ 
+ Vp= vect(:,ind);
+ 
+ soma_Vp= sum(Vp);
+ Vp_normalizado = Vp/soma_Vp;
+ 
+ Vp_normalizado_total = sum(Vp_normalizado);
+
+%Comparação das distribuições de equilíbrio 
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel('Estados'); xlim([0 21]);
+ ylabel('Probabilidade de estado'); title('Distribuições de equilíbrio');
+ legend('Original','Monte Carlo');
+ 
+ %Evolução no tempo da distribuição
+ t=1:n_passos;
+ estados=repmat(1:20,length(t),1);
+ 
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel('t [s]'); ylabel('Âncoras'); zlabel('Probabilidade');
+ title('Evolução no tempo da distribuição de probabilidade');
+ 
+ %REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-Comparação com o estado mais frequenteREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- 
+ 
+ estado_inicial=7;
+ %Obtenção da matriz passo/estado
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,'c',estado_inicial);
+ 
+ estados_MC = cumsum(estados_MC);
+ 
+ estados_MC_norm=zeros(n_passos, 20);
+ 
+ for j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ end
+ 
+ dist_estados=estados_MC_norm(n_passos,:);
+
+%Comparação das distribuições de equilíbrio 
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel('Estados'); xlim([0 21]);
+ ylabel('Probabilidade de estado'); 
+ title('Distribuições de equilíbrio - Token inicial mais frequente');
+ legend('Original','Monte Carlo');
+ 
+ %Evolução no tempo da distribuição
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel('t [s]'); ylabel('Âncoras'); zlabel('Probabilidade');
+ title('Evolução da distribuição no tempo - Token inicial mais frequente');
+ 
+  %REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-Comparação com o estado menos frequenteREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH- 
+ 
+ estado_inicial=17;
+ 
+ n_runs=5000;
+ n_passos=300;
+ 
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,'c',estado_inicial);
+ 
+ estados_MC = cumsum(estados_MC);
+ 
+ estados_MC_norm=zeros(n_passos, 20);
+ 
+ for j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ end
+ 
+ dist_estados=estados_MC_norm(n_passos,:);
+
+%Comparação das distribuições de equilíbrio 
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel('Estados'); xlim([0 21]);
+ ylabel('Probabilidade de estado'); 
+ title('Distribuições de equilíbrio - Token inicial menos frequente');
+ legend('Original','Monte Carlo');
+ 
+ %Evolução no tempo da distribuição
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel('t [s]'); ylabel('Âncoras'); zlabel('Probabilidade');
+ title('Evolução da distribuição no tempo - Token inicial menos frequente');
+ 
+ %%
+ % A partir da primeira figura, podemos confirmar que as distribuições de
+ % equilíbrio obtidas pelo método de Monte Carlo são próximas das
+ % determinadas na secção 2.
+ %
+ % De forma semelhante à alínea 2.c), a partir do
+ % método de Monte Carlo, simulou-se a evolução das
+ % probabilidades dos diversos estados da cadeira de Markov ao longo do
+ % tempo para diferentes condições iniciais. 
+ %
+ % Pode-se observar que, quando o token começa num estado central,
+ % como o estado 7, este tem mais facilidade em rapidamente circular pela
+ % rede e atingir a probabilidade de equilíbrio, ou seja, tem um elevado 
+ % ritmo de convergência. O mesmo não se verifica quando o token inicia
+ % numa zona que o retém, por exemplo, o estado 17. Neste caso, o ritmo de
+ % convergência é bastante inferior e as probabilidades de equilíbrio
+ % atingidas são diferentes das originais.
+ 
+ %%
+ % 3.a) Ponto de vista da equipa/elemento hostil
+ %%
+ clear 
+ 
+ load('MarkovChain.mat')
+ 
+ P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; %Nó 6
+ P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; %Nó 15
+ P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; %Nó 1
+ P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; %Nó 3
+ P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; %Nó 12
+ P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; %Nó 4
+ P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; %Nó 20
+ P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; %Nó 13
+ P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; %Nó 16
+ P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; %Nó 10
+
+ n_runs=5000;
+ n_passos=300;
+ 
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,'a',0);
+ 
+ estados_MC = cumsum(estados_MC);
+ 
+ estados_MC_norm=zeros(n_passos, 20);
+ 
+ for j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ end
+ 
+ dist_estados=estados_MC_norm(n_passos,:);
+ 
+ %repetição da alínea 2.a)
+ 
+ [vect, val]= eig(P');
+ 
+min= 900;
+
+  for i=1:length(val) 
+    if(abs(val(i,i)-1))<min
+        min=abs(val(i,i)-1);
+        ind=i;
+    end
+  end
+
+Vp= vect(:,ind);
+
+soma_Vp= sum(Vp);
+Vp_normalizado = Vp/soma_Vp;
+Vp_normalizado_total = sum(Vp_normalizado);
+
+%Comparação das distribuições de equilíbrio 
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel('Estados'); xlim([0 21]);
+ ylabel('Probabilidade de estado'); 
+ title('Distribuições de equilíbrio - Grafo melhorado');
+ legend('Original','Monte Carlo');
+ 
+ %Evolução no tempo da distribuição
+ t=1:n_passos;
+ estados=repmat(1:20,length(t),1);
+ 
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel('t [s]'); ylabel('Âncoras'); zlabel('Probabilidade');
+ title('Evolução da distribuição no tempo - Grafo melhorado');
+ 
+ % 3.a) Ponto de vista de um elemento hostil 
+ 
+ clear P
+ load('MarkovChain.mat')
+ 
+ P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+ P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+ 
+ estados_MC= simulacao_MonteCarlo(P,n_runs,n_passos,20,'a',0);
+ 
+ estados_MC = cumsum(estados_MC);
+ 
+ estados_MC_norm=zeros(n_passos, 20);
+ 
+ for j=1:n_passos
+     estados_MC_norm(j,:)=estados_MC(j,:)./sum(estados_MC(j,:));
+ end
+ 
+ dist_estados=estados_MC_norm(n_passos,:);
+ 
+ %alínea 2.a)
+ 
+ [vect, val]= eig(P');
+
+ min= 900;
+ 
+ for i=1:length(val)
+     if(abs(val(i,i)-1))<min
+         min=abs(val(i,i)-1);
+         ind=i;
+     end
+ end
+
+ Vp= vect(:,ind);
+ 
+ soma_Vp= sum(Vp);
+ Vp_normalizado = Vp/soma_Vp;
+ Vp_normalizado_total = sum(Vp_normalizado);
+
+%Comparação das distribuições de equilíbrio 
+ figure;
+ bar([Vp_normalizado dist_estados']);
+ xlabel('Estados'); xlim([0 21]);
+ ylabel('Probabilidade de estado'); 
+ title('Distribuições de equilíbrio - Grafo hostil');
+ legend('Original','Monte Carlo');
+ 
+ %Evolução no tempo da distribuição
+ figure;
+ plot3(t,estados,estados_MC_norm);
+ xlabel('t [s]'); ylabel('Âncoras'); zlabel('Probabilidade');
+ title('Evolução da distribuição no tempo - Grafo hostil');
+ 
+ %%
+ % A partir do método de Monte Carlo (MC) também se simulou as variantes do grafo da
+ % alínea 2.d). Para a cadeia de Markov melhorada a
+ % distribuição de equilíbrio obtida é ainda mais próxima da original do que a
+ % determinada anteriormente, tal pode ser explicado pelo facto de nesta
+ % o vetor de probabilidade limite ser próximo de uma distribuiçao
+ % uniforme.
+ %
+ % Relativamente aos ritmos de convergência, conclui-se que estes são mais
+ % lentos para o método de MC. Para a cadeia de Markov com pior circulação,
+ % é bastante mais lento pois nem chega a atingir a distribuição de
+ % equilíbrio dentro da janela de tempo.
+ %
+ % Desta forma, pode-se concluir que o método de MC é bastante preciso para
+ % uma quantidade elevada de runs.
+ %% Questão 3.b)
+ % Nesta questão, estimou-se o erro da posição da fonte ao longo do tempo a
+ % partir da função 'erro_MonteCarlo.m'. Esta constrói as matrizes A e
+ % b, resolve o problema de mínimos quadráticos a partir do algoritmo RLS e 
+ % calcula o erro através da posição estimada da fonte em cada passo.
+ %%
+ type('erro_MonteCarlo.m')
+ %%
+ clear
+ close all
+ 
+ load('MarkovChain.mat')
+ n_passos=200;
+ n_runs=800;
+
+ Po=100; %Potência da fonte
+ variancia=10^-2;
+ 
+ estado_inicial=7;
+ 
+ a=[nodePos(:,2),nodePos(:,3)]';
+ D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+ d=D(1,3:end); %Fonte-âncora distância
+ 
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,'c','a',0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+ 
+ figure(1)
+ plot(t, erro_med);
+ hold on
+ 
+ % Zona 1 longe da fonte
+ 
+ estado_inicial=15;
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,'c','a',0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+ 
+ figure(1)
+ plot(t, erro_med);
+ hold on
+ 
+ % Zona 2 perto da fonte
+ 
+  estado_inicial=10;
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,estado_inicial,'c','a',0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+ 
+ figure(1)
+ plot(t, erro_med);
+ xlabel('t [s]'); ylabel('Erro');
+ title('Erro de estimativa de posição da fonte');
+ legend('Posição Central','Zona 1 - Longe da Fonte', 'Zona 2 - Perto da fonte');
+
+ % Versão Melhorada
+ 
+ P(6,1)=0.3; P(6,11)=0.45; P(6,15)=0.25; %Nó 6
+ P(15,20)=0.25; P(15,5)=0.40; P(15,6)=0.35; %Nó 15
+ P(1,6)=0.20; P(1,20)=0.25; P(1,7)=0.25; P(1,13)=0.30; %Nó 1
+ P(3,12)=0.4; P(3,19)=0.3; P(3,16)=0.3; %Nó 3
+ P(12,3)=0.30; P(12,10)=0.25; P(12,8)=0.45; %Nó 12
+ P(4,19)=0.4; P(4,13)=0.15; P(4,2)=0.45; %Nó 4
+ P(20,15)=0.35; P(20,1)=0.15; P(20,7)=0.15; P(20,14)=0.35; %Nó 20
+ P(13,1)=0.25; P(13,2)=0.35; P(13,4)=0.15; P(13,19)=0.25; %Nó 13
+ P(16,3)=0.25; P(16,7)=0.15; P(16,18)=0.6; %Nó 16
+ P(10,17)=0.45; P(10,12)=0.35; P(10,9)=0.2; %Nó 10
+ 
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,0,'a','a',0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+ 
+ figure(2)
+ plot(t, erro_med);
+ hold on
+ 
+ % Versão Piorada
+ 
+ clear P
+ 
+ load('MarkovChain.mat');
+
+ P(1,6)=0.8; P(1,20)=0.1; P(1,7)=0.1;
+ P(6,1)=0.1; P(6,11)=0.45; P(6,15)=0.45;
+ 
+ erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,sourcePos,d,P,0,'a','a',0);
+
+ erro_med=erro./n_runs;
+ t=1:n_passos;
+ 
+ figure(2)
+ plot(t, erro_med);
+ xlabel('t [s]'); ylabel('Erro');
+ title('Erro de estimativa de posição da fonte');
+ legend('Melhor circulação','Pior circulação');
+%%
+% A partir dos gráficos obtidos, pode-se verificar, que quando se inicia o
+% token numa posição central, por exemplo âncora 7, o erro diminui
+% exponencialmente nos primeiros instantes. No entanto, neste caso, converge para
+% um valor diferente de 0, ou seja a estimação da localização da fonte não
+% é exata. 
+% 
+% Do mesmo modo, determinou-se a situação em que se inicia o token no estado 15, 
+% que é uma âncora pertencente a um subconjunto de estados 
+% que tende a reter o mesmo e que se encontra longe da fonte. Como era de
+% esperar neste caso, o erro leva mais tempo a aproximar-se da fonte, no
+% entanto, converge aproximadamente para o mesmo valor que se verificou
+% na situação anterior.
+%
+% Por outro lado, quando se inicia o token na âncora 10, 
+% que também pertence a 
+% uma zona que tende a reter o mesmo, no entanto bastante mais
+% próxima da fonte, este caso, relativamente às duas outras situações, é o mais
+% rápido a convergir e converge para um erro=0.
+%
+% A partir da segunda figura, concluímos que as variantes do grafo da
+% alínea 2.d) influenciam a evolução do erro. Tal como era esperado, o grafo
+% melhorado no sentido da equipa converge mais rapidamente para a posição 
+% exata da fonte, pois o token circula de forma eficaz por todo o
+% grafo. 
+%
+% Para o grafo onde se dificulta a circulação do token, verifica-se que
+% este converge para um erro bastante superior a 0, uma vez que não
+% consegue chegar a todas as antenas, logo dificulta a estimativa exata da
+% posição da fonte.
+
+%% Questão 3.c)
+% Nesta alínea, a fonte movimenta-se em simultâneo com a transição do token.
+% Desta forma, introduz-se um factor de esquecimente 0< $\lambda$ $\leq$ 1 no
+% algoritmo RLS, para que na função de custo se dê mais peso aos últimos
+% termos do que os primeiros.
+%%
+
+clear
+ close all
+ 
+ load('MarkovChain.mat')
+ n_passos=1200;
+ n_runs=300;
+
+ Po=100; %Potência da fonte
+ variancia=10^-2;
+ lambda_set=[1 0.3 0.85];
+ 
+ a=[nodePos(:,2),nodePos(:,3)]';
+ D=squareform(pdist([sourcePos' zeros(size(sourcePos')) a]'));
+ d=D(1,3:end); %Fonte-âncora distância
+
+ for i=1:length(lambda_set)
+     
+     erro=erro_MonteCarlo(n_passos,n_runs,Po,variancia,nodePos,...
+                          sourcePos,d,P,0,'a','fonte_movimento',lambda_set(i)); 
+     erro_med=erro./n_runs;
+     t=1:n_passos;
+     
+     figure(1)
+     plot(t, erro_med);
+     hold on
+ end
+
+
+figure(1)
+xlabel('t [s]'); ylabel('Erro'); 
+legend('\lambda=1','\lambda=0.3','\lambda=0.85');
+title('Evolução do erro para uma fonte em movimento')
+
+%%
+% * Para $\lambda$=1, pode-se observar que o erro diminui exponencialmente
+% numa primeira parte, chegando a 0 por uns instantes. No entanto, a partir
+% de um certo número de transições começa a aumentar, devido
+% ao factor de esquecimento dar o mesmo peso a todas as medições. Com a
+% fonte em movimento, é necessário introduzir um $\lambda$ de forma a
+% dar-se mais peso às medições mais recentes em comparação com as antigas.
+%
+% * Para um valor baixo de $\lambda$, por exemplo 0.3, o algoritmo dá
+% importância apenas à última medição, praticamente ignorando as medições
+% anteriores. Como se pode verificar, esta estratégia também não conduz a uma
+% boa estimativa da fonte. É necessário encontrar um equilíbrio entre o peso
+% das medições actuais e as anteriores.
+%
+% * De seguida, testaram-se vários valores de $\lambda$ de forma a
+% encontrar um valor que melhor estimasse a posição da fonte para todas as
+% transições, obtendo-se $\lambda$=0.85.
+%
+% Por fim, é necessário ter em atenção que o erro pode ser maior ou menor
+% tendo em conta a trajectória da fonte e se esta se aproxima ou afasta
+% das antenas.
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,1233 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>1&ordm; Laborat&oacute;rio de Modela&ccedil;&atilde;o e Simula&ccedil;&atilde;o</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-14"><meta name="DC.source" content="Lab1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>1&ordm; Laborat&oacute;rio de Modela&ccedil;&atilde;o e Simula&ccedil;&atilde;o</h1><!--introduction--><p>Alice Rosa, n&ordm;90007</p><p>Beatriz Pereira, n&ordm;90029</p><p>Grupo 16, Turno 3&ordf; feira &agrave;s 9h00</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1. Simula&ccedil;&atilde;o do movimento livre de uma viatura</a></li><li><a href="#4">2.Modelo Predador-Presa</a></li><li><a href="#5">2.2 Diferentes respostas para diferentes <img src="Lab1_eq06646721004341227832.png" alt="$\delta$"></a></li><li><a href="#8">2.3 Ponto de equil&iacute;brio, Espa&ccedil;o de fase (<img src="Lab1_eq03388570957346361659.png" alt="$N_1$">, <img src="Lab1_eq06369957895829921361.png" alt="$N_2$">)</a></li><li><a href="#11">2.4 Otimiza&ccedil;&atilde;o da curva</a></li><li><a href="#12">2.4 a)</a></li><li><a href="#15">2.4 b)</a></li><li><a href="#20">2.4 c)</a></li><li><a href="#22">2.4 d)</a></li><li><a href="#24">3. Sistema Ca&oacute;tico</a></li><li><a href="#25">3.1. Realiza&ccedil;&atilde;o do modelo do sistema em Simulink e a passagem dos dados para o Matlab</a></li><li><a href="#29">3.2. Curva de Lissajous</a></li><li><a href="#32">3.4 Tempo at&eacute; que uma das barras fa&ccedil;a um looping</a></li><li><a href="#37">3.4 Verifica&ccedil;&atilde;o de resultados</a></li></ul></div><h2>1. Simula&ccedil;&atilde;o do movimento livre de uma viatura<a name="1"></a></h2><pre class="codeinput"><span class="comment">%Cria&ccedil;&atilde;o do seguinte diagrama de blocos com o SIMULINK:</span>
+
+open(<span class="string">'carro'</span>);
+</pre><img vspace="5" hspace="5" src="Lab1_01.png" alt=""> <pre class="codeinput"><span class="comment">%Defini&ccedil;&atilde;o dos par&acirc;metros de simula&ccedil;&atilde;o</span>
+
+m=30;
+beta=5;
+vo_set=[-3 3];
+tau_set=[3 6 10];
+yo=5;
+tt=50;
+
+close <span class="string">all</span>;
+f1=figure;
+f2=figure;
+
+<span class="keyword">for</span> counter=1:length(vo_set);
+    vo=vo_set(counter);
+
+    <span class="keyword">for</span> tau=[3 6 10]
+    sim(<span class="string">'carro'</span>,tt);
+
+    figure(f1);
+    plot(t,v);
+    hold <span class="string">on</span>;
+
+    figure(f2);
+    plot(t,y);
+    hold <span class="string">on</span>;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure(f1);
+xlabel(<span class="string">'t(s)'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'v(m/s)'</span>,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Velocidade'</span>,<span class="string">'fontsize'</span>,12);
+grid <span class="string">on</span>;
+set(gca,<span class="string">'fontsize'</span>,12);
+lg=legend(sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(2)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(3)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(2)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(3)));
+set(lg,<span class="string">'fontsize'</span>,9);
+hold <span class="string">on</span>;
+
+figure(f2);
+xlabel(<span class="string">'t(s)'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'h(m)'</span>,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Posi&ccedil;&atilde;o'</span>,<span class="string">'fontsize'</span>,12);
+grid <span class="string">on</span>;
+set(gca,<span class="string">'fontsize'</span>,12);
+lg=legend(sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(2)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(1), tau_set(3)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(2)),<span class="keyword">...</span>
+       sprintf(<span class="string">'V_o=%d m/s tau=%d s'</span>,vo_set(2), tau_set(3)));
+set(lg,<span class="string">'fontsize'</span>,9);
+</pre><img vspace="5" hspace="5" src="Lab1_02.png" alt=""> <img vspace="5" hspace="5" src="Lab1_03.png" alt=""> <p>Tendo em conta que n&atilde;o est&aacute; a ser aplicada nenhuma for&ccedil;a exterior sobre o carro, a &uacute;nica for&ccedil;a que temos a atuar &eacute; a for&ccedil;a de atrito, desta forma, &eacute; de esperar que passado algum tempo a velocidade do carro tenda para 0, que &eacute; exatamente o que se verifica nos gr&aacute;ficos obtidos. Tamb&eacute;m podemos verificar que quanto menor a constante de tempo <img src="Lab1_eq14593889327204786447.png" alt="$\tau$">, mais depressa o carro p&aacute;ra, o que seria de esperar tendo em conta a equa&ccedil;&atilde;o obtida na al&iacute;nea 1.3, pois a exponencial est&aacute; elevada a <img src="Lab1_eq03982383398451339111.png" alt="$-\frac{1}{\tau}$">.</p><p>Para os gr&aacute;ficos obtidos relativamente &agrave; posi&ccedil;&atilde;o do carro, esperava-se que passado algum tempo este estabilizasse numa posi&ccedil;&atilde;o que se pode calcular a partir da express&atilde;o obtida em 1.4: <img src="Lab1_eq00351009529795018400.png" alt="$y_{final}=y_o+\frac{V_o*m}{\beta}$"></p><p>Tamb&eacute;m se verificou que para uma velocidade inicial negativa (carro em marcha atr&aacute;s) a posi&ccedil;&atilde;o em que o carro p&aacute;ra tamb&eacute;m &eacute; negativa tendo em conta o nosso referencial.</p><h2>2.Modelo Predador-Presa<a name="4"></a></h2><h2>2.2 Diferentes respostas para diferentes <img src="Lab1_eq06646721004341227832.png" alt="$\delta$"><a name="5"></a></h2><pre class="codeinput"><span class="comment">% Cria&ccedil;&atilde;o do seguinte diagrama de blocos com o SIMULINK:</span>
+open(<span class="string">'predador_presa'</span>);
+</pre><img vspace="5" hspace="5" src="Lab1_04.png" alt=""> <pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+delta1=1;
+delta2=-1;
+alpha1=1;
+alpha2=1;
+N1_inicial=3;
+N2_inicial=3;
+tt=30;
+
+sim(<span class="string">'predador_presa'</span>,tt);
+
+figure(1);
+plot(t,N1,t,N2,<span class="string">'LineWidth'</span>,1.2);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Solu&ccedil;&atilde;o para: \delta_1=1, \delta_2=-1'</span>,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N_1-Presa'</span>,<span class="string">'N_2-Predador'</span>);
+grid <span class="string">on</span>;
+hold <span class="string">on</span>;
+
+tt=3;
+delta1=-1;
+delta2=1;
+
+sim(<span class="string">'predador_presa'</span>,tt);
+figure(2);
+plot(t,N1,t,N2,<span class="string">'LineWidth'</span>,1.2);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Solu&ccedil;&atilde;o para: \delta_1=-1, \delta_2=1'</span>,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N_1-Presa'</span>,<span class="string">'N_2-Predador'</span>);
+grid <span class="string">on</span>;
+hold <span class="string">on</span>;
+
+tt=5;
+delta1=-1;
+delta2=-1;
+N1_inicial=3;
+
+sim(<span class="string">'predador_presa'</span>,tt);
+figure(3);
+plot(t,N1,t,N2,<span class="string">'LineWidth'</span>,1.2);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Solu&ccedil;&atilde;o para: \delta_1=-1, \delta_2=-1'</span>,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N_1-Presa'</span>,<span class="string">'N_2-Predador'</span>);
+grid <span class="string">on</span>;
+hold <span class="string">on</span>;
+
+
+delta1=-1;
+delta2=-4;
+
+sim(<span class="string">'predador_presa'</span>,tt);
+figure(4);
+plot(t,N1,t,N2,<span class="string">'LineWidth'</span>,1.2);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Solu&ccedil;&atilde;o para: \delta_1=-1, \delta_2=-4'</span>,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N_1-Presa'</span>,<span class="string">'N_2-Predador'</span>);
+grid <span class="string">on</span>;
+hold <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="Lab1_05.png" alt=""> <img vspace="5" hspace="5" src="Lab1_06.png" alt=""> <img vspace="5" hspace="5" src="Lab1_07.png" alt=""> <img vspace="5" hspace="5" src="Lab1_08.png" alt=""> <p>Para o primeiro gr&aacute;fico, temos a solu&ccedil;&atilde;o oscilat&oacute;ria que como previsto ocorre quando <img src="Lab1_eq00078991068683878405.png" alt="$\delta_1$">&gt;0 e <img src="Lab1_eq08498643389968338524.png" alt="$\delta_2$">&lt;0. O segundo gr&aacute;fico &eacute; a solu&ccedil;&atilde;o em que o predador cresce indefenidamente e a presa se extingue, com <img src="Lab1_eq11013974547188444370.png" alt="$\delta_1<0$"> e <img src="Lab1_eq08498643389968338524.png" alt="$\delta_2$">&gt;0. O terceiro gr&aacute;fico &eacute; a solu&ccedil;&atilde;o em que a presa e o predador se extiguem passado algum tempo, com <img src="Lab1_eq00078991068683878405.png" alt="$\delta_1$">&lt;0 e <img src="Lab1_eq08498643389968338524.png" alt="$\delta_2$">&lt;0. O &uacute;ltimo gr&aacute;fico obtido tem a mesma solu&ccedil;&atilde;o que o terceiro, no entanto, enquanto que no gr&aacute;fico anterior os predadores atingem um pico e depois,passado algum tempo, &eacute; que se extiguem, neste gr&aacute;fico diminui-se o <img src="Lab1_eq08498643389968338524.png" alt="$\delta_2$"> de forma a que as esp&eacute;cies se extiguissem sens&iacute;velmente ao mesmo tempo.</p><h2>2.3 Ponto de equil&iacute;brio, Espa&ccedil;o de fase (<img src="Lab1_eq03388570957346361659.png" alt="$N_1$">, <img src="Lab1_eq06369957895829921361.png" alt="$N_2$">)<a name="8"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+N1_inicial_set=[3 2];
+N2_inicial_set=[2 1];
+delta1=1;
+delta2=-1;
+alpha1=1;
+alpha2=1;
+tt=30;
+
+<span class="comment">%Espa&ccedil;o de fase</span>
+
+<span class="keyword">for</span> counter=1:length(N1_inicial_set);
+    N1_inicial=N1_inicial_set(counter);
+    N2_inicial=N2_inicial_set(counter);
+
+    sim(<span class="string">'predador_presa'</span>,tt);
+
+    figure(1);
+    plot(N1,N2);
+    hold <span class="string">on</span>;
+
+<span class="keyword">end</span>
+
+figure(1);
+xlabel(<span class="string">'Abund&acirc;ncia da Presa'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia do Predador'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+legend(sprintf(<span class="string">'N1(0),N2(0)= %d,%d'</span>,N1_inicial_set(1),N2_inicial_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'N1(0),N2(0)= %d,%d'</span>,N1_inicial_set(2),N2_inicial_set(2)));
+title(<span class="string">'Modelo predador-presa'</span>);
+grid <span class="string">on</span>;
+
+<span class="comment">%Ponto de equil&iacute;brio</span>
+
+N1_inicial=delta1/alpha1;
+N2_inicial=-delta2/alpha2;
+tt=10;
+
+sim(<span class="string">'predador_presa'</span>,tt);
+
+figure(2);
+p=plot(t,N1,t,N2,<span class="string">'--'</span>);
+p(1).LineWidth = 1.5;
+p(2).LineWidth = 2;
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Ponto de equil&iacute;brio'</span>,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N1-Presa'</span>,<span class="string">'N2-Predador'</span>);
+grid <span class="string">on</span>;
+
+<span class="comment">% Diferentes evolu&ccedil;&otilde;es temporais</span>
+
+N1_inicial_set=[1 2];
+N2_inicial_set=[2 1];
+tt=30;
+
+<span class="keyword">for</span> counter=1:length(N1_inicial_set);
+    N1_inicial=N1_inicial_set(counter);
+    N2_inicial=N2_inicial_set(counter);
+
+    sim(<span class="string">'predador_presa'</span>,tt);
+
+    figure(3);
+    p=plot(t,N1,t,N2);
+    hold <span class="string">on</span>;
+<span class="keyword">end</span>
+
+figure(3);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+p(1).LineWidth = 1.5;
+p(2).LineWidth = 1.5;
+set(gca,<span class="string">'fontsize'</span>,12);
+lg=legend(sprintf(<span class="string">'N_1-CI(%.0f,%.0f)'</span>,N1_inicial_set(1),N2_inicial_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'N_2-CI(%.0f,%.0f)'</span>,N1_inicial_set(1),N2_inicial_set(1)),<span class="keyword">...</span>
+       sprintf(<span class="string">'N_1-CI(%.1f,%.0f)'</span>,N1_inicial_set(2),N2_inicial_set(2)),<span class="keyword">...</span>
+       sprintf(<span class="string">'N_2-CI(%.1f,%.0f)'</span>,N1_inicial_set(2),N2_inicial_set(2)));
+set(lg,<span class="string">'fontsize'</span>,11);
+title(<span class="string">'Modelo predador-presa'</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="Lab1_09.png" alt=""> <img vspace="5" hspace="5" src="Lab1_10.png" alt=""> <img vspace="5" hspace="5" src="Lab1_11.png" alt=""> <p>No primeiro gr&aacute;fico obteve-se o espa&ccedil;o de fase (<img src="Lab1_eq03388570957346361659.png" alt="$N_1$">, <img src="Lab1_eq06369957895829921361.png" alt="$N_2$">) para a solu&ccedil;&atilde;o oscilat&oacute;ria com diferentes valores de condi&ccedil;&otilde;es iniciais. O segundo gr&aacute;fico &eacute; a confirma&ccedil;&atilde;o do ponto de equil&iacute;brio, ou seja, para determinadas condi&ccedil;&otilde;es iniciais (calculadas na al&iacute;nea 2.2) o sistema mant&ecirc;m-se constante no tempo, que &eacute; o que se verifica. O &uacute;ltimo gr&aacute;fico mostra como a mudan&ccedil;a das condi&ccedil;&otilde;es iniciais alteram a evolu&ccedil;&atilde;o do sistema no tempo. A situa&ccedil;&atilde;o em que <img src="Lab1_eq08914271344846963184.png" alt="$N_1(0)$"> &lt; <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$"> est&aacute; em avan&ccedil;o e quadratura face &agrave; situa&ccedil;&atilde;o em que <img src="Lab1_eq08914271344846963184.png" alt="$N_1(0)$"> &gt; <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$">.</p><h2>2.4 Otimiza&ccedil;&atilde;o da curva<a name="11"></a></h2><h2>2.4 a)<a name="12"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+N1_inicial=4;
+N2_inicial=1.6;
+delta1=3.1;
+delta2=-1.5;
+alpha1=1.4;
+alpha2=0.7;
+tt=20;
+load(<span class="string">'presas.mat'</span>);
+
+sim(<span class="string">'predador_presa'</span>,tt);
+plot(tr,yr,t,N2);
+legend(<span class="string">'N_1-presa'</span>,<span class="string">'N_2-predador'</span>);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12); ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="Lab1_12.png" alt=""> <p>O objectivo nesta quest&atilde;o era arranjar um equ&iacute;librio entre o <img src="Lab1_eq03151659423380361585.png" alt="$\alpha_2$"> e <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$"> de forma a quando o n&uacute;mero de presas diminuisse passado algum tempo o n&uacute;mero de predadores tamb&eacute;m come&ccedil;ava a diminuir e vice-versa, mantendo sempre a mesma desfasagem entre as curvas da presa e predador. Desta forma, variou-se os par&acirc;metros at&eacute; se chegar a uma solu&ccedil;&atilde;o aproximada da que se queria sendo esta (<img src="Lab1_eq03151659423380361585.png" alt="$\alpha_2$">, <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$">)=(0.7,1.6).</p><h2>2.4 b)<a name="15"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+N0_set=1.6:0.002:1.62;
+alpha_set=0.7:0.002:0.72;
+[X,Y]=meshgrid(N0_set,alpha_set);
+
+<span class="keyword">for</span> i=1:length(N0_set);
+    V(1)=N0_set(i);
+
+    <span class="keyword">for</span> j=1:length(alpha_set);
+        V(2)=alpha_set(j);
+        dif(i,j)=MVAD(V);
+    <span class="keyword">end</span>
+   <span class="comment">% waitbar(i/10);</span>
+<span class="keyword">end</span>
+
+surf(X,Y,dif);
+set(gca,<span class="string">'zscale'</span>,<span class="string">'log'</span>);
+set(gca,<span class="string">'zscale'</span>,<span class="string">'log'</span>,<span class="string">'fontsize'</span>,12);
+xlabel(<span class="string">'N_2(0)'</span>,<span class="string">'fontsize'</span>,12); ylabel(<span class="string">'\alpha_2'</span>,<span class="string">'fontsize'</span>,12');
+zlabel(<span class="string">'Erro'</span>,<span class="string">'fontsize'</span>,12); colorbar;
+</pre><img vspace="5" hspace="5" src="Lab1_13.png" alt=""> <p>Fun&ccedil;&atilde;o utilizada para calcular o Erro</p><pre class="codeinput">type(<span class="string">'MVAD.m'</span>);
+</pre><pre class="codeoutput">
+function y=MVAD(x)
+
+options = simset('SrcWorkspace','current');
+load('presas.mat');
+
+N1_inicial=4;
+N2_inicial=x(1);
+delta1=3.1;
+delta2=-1.5;
+alpha1=1.4;
+alpha2=x(2);
+tt=20;
+x_max=-1;
+
+sim('predador_presa',[],options);
+
+ %C&aacute;lculo no m&aacute;ximo valor absoluto das diferen&ccedil;as
+ for k=1:length(tr)
+    
+    x=abs(N1(k)-yr(k));
+    
+    if x&gt;x_max
+       x_max=x;
+    end
+    
+ end
+
+y=x_max;
+ 
+end
+</pre><p>Nesta quest&atilde;o, o objectivo era encontrar os par&acirc;metros <img src="Lab1_eq03151659423380361585.png" alt="$\alpha_2$"> e <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$"> de forma a obtermos uma curva o mais pr&oacute;xima poss&iacute;vel da curva que nos foi dada. Para isto criou-se a fun&ccedil;&atilde;o erro que nos devolve o m&aacute;ximo valor absoluto das diferen&ccedil;as entre os pontos fornecidos e os pontos simulados para determinados par&acirc;metros. No final, a partir do gr&aacute;fico obtido conclui-se que, dos par&acirc;metros testados, os que melhor se ajustam &agrave; curva fornecida s&atilde;o (<img src="Lab1_eq03151659423380361585.png" alt="$\alpha_2$">, <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$">)=(0.704,1.6120).</p><h2>2.4 c)<a name="20"></a></h2><pre class="codeinput">clear;
+
+N0_2=[1.6, 2];
+alpha_2=[0.7, 3];
+
+ <span class="keyword">for</span> i=1:length(N0_2)
+    xo=[N0_2(i),alpha_2(i)];
+    fun=@MVAD;
+    [point,erro]=fminsearch(fun,xo);
+    display(erro);
+    display(point);
+ <span class="keyword">end</span>
+</pre><pre class="codeoutput">
+erro =
+
+    0.1558
+
+
+point =
+
+    1.6144    0.7047
+
+
+erro =
+
+    4.4023
+
+
+point =
+
+    1.7097    3.1166
+
+</pre><p>Nesta al&iacute;nea, para descobrir os par&acirc;metros utilizou-se a fun&ccedil;&atilde;o fminsearch em que a partir da fun&ccedil;&atilde;o erro desenvolvida e de par&acirc;metros iniciais esta fun&ccedil;&atilde;o vai fazendo chamadas &agrave; fun&ccedil;&atilde;o erro aproximando-se cada vez mais do ponto desejado. Desta forma, o nosso c&oacute;digo fica muito mais eficiente e os par&acirc;metros finais s&atilde;o mais exatos, relativamente &agrave; procura feita anteriormente, com (<img src="Lab1_eq03151659423380361585.png" alt="$\alpha_2$">, <img src="Lab1_eq08005599936160682102.png" alt="$N_2(0)$">)=(0.7047,1.6144).</p><p>No entanto, realizou-se ainda outro exemplo com outro ponto inicial afastado do resultado ideal, onde se obteve um resultado completamente diferente. Podemos assim concluir que &eacute; melhor utilizar esta fun&ccedil;&atilde;o quando j&aacute; temos uma ideia dos par&acirc;metros a que corresponde o erro m&iacute;nimo, sen&atilde;o a fun&ccedil;&atilde;o encontra outro qualquer m&iacute;nimo local que n&atilde;o a resposta ideial.</p><h2>2.4 d)<a name="22"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+
+N1_inicial=4;
+N2_inicial=1.6144;
+delta1=3.1;
+delta2=-1.5;
+alpha1=1.4;
+alpha2=0.7047;
+tt=20;
+load(<span class="string">'presas.mat'</span>);
+
+sim(<span class="string">'predador_presa'</span>,tt);
+plot(tr,yr,<span class="string">'o'</span>,t,N1,<span class="string">'LineWidth'</span>,1.2);
+legend(<span class="string">'N1-Fornecido'</span>,<span class="string">'N1-Simulado'</span>);
+xlabel(<span class="string">'Tempo'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'Abund&acirc;ncia'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+legend(<span class="string">'N_1-Pontos fornecidos'</span>,<span class="string">'N_1-Curva simulada'</span>);
+grid <span class="string">on</span>;
+ax = gca;
+ax.GridAlpha = 0.6;
+</pre><img vspace="5" hspace="5" src="Lab1_14.png" alt=""> <p>Esta al&iacute;nea serve como verifica&ccedil;&atilde;o dos resultados obtidos. Como podemos verificar utilizando os par&acirc;metros calculados na al&iacute;nea (c) a curva simulada ajusta-se muito bem aos pontos fornecidos.</p><h2>3. Sistema Ca&oacute;tico<a name="24"></a></h2><h2>3.1. Realiza&ccedil;&atilde;o do modelo do sistema em Simulink e a passagem dos dados para o Matlab<a name="25"></a></h2><pre class="codeinput">open(<span class="string">'pendulo_duplo'</span>);
+</pre><img vspace="5" hspace="5" src="Lab1_15.png" alt=""> <pre class="codeinput">clear;
+close <span class="string">all</span>;
+ m=1;
+ l=0.5;
+ g=9.8;
+ teta_1_inicial=0.05;
+ teta_2_inicial=0.05;
+ p_1_inicial=0;
+ p_2_inicial=0;
+ tt=3;
+
+ sim(<span class="string">'pendulo_duplo'</span>, tt);
+
+ <span class="comment">%posi&ccedil;&atilde;o ao longo do tempo</span>
+x=l*(sin(teta_2)+sin(teta_1));
+y=-l*(cos(teta_2)+cos(teta_1));
+
+figure(1);
+plot(x,y);
+xlabel(<span class="string">'x'</span>);
+ylabel(<span class="string">'y'</span>);
+title(<span class="string">'Sistema n&atilde;o ca&oacute;tico'</span>);
+
+teta_1_inicial=15;
+teta_2_inicial=15;
+sim(<span class="string">'pendulo_duplo'</span>, tt);
+
+x=l*(sin(teta_2)+sin(teta_1));
+y=-l*(cos(teta_2)+cos(teta_1));
+
+figure(2);
+plot(x,y);
+xlabel(<span class="string">'x'</span>);
+ylabel(<span class="string">'y'</span>);
+title(<span class="string">'Sistema ca&oacute;tico'</span>);
+</pre><img vspace="5" hspace="5" src="Lab1_16.png" alt=""> <img vspace="5" hspace="5" src="Lab1_17.png" alt=""> <p>A partir dos gr&aacute;ficos obtidos verificou-se a implementa&ccedil;&atilde;o correta do sistema din&acirc;mico. Uma vez que para <img src="Lab1_eq14368882142069237929.png" alt="$\theta_1(0)$"> e <img src="Lab1_eq14991722545458406570.png" alt="$\theta_2(0)$"> pequenos obteve-se uma curva em que os &acirc;ngulos n&atilde;o se afastam muito dos &acirc;ngulos iniciais, como era de esperar. Enquanto que no segundo gr&aacute;fico, se verifica que para &acirc;ngulos maiores o sistema come&ccedil;a a ter um comportamento mais aleat&oacute;rio e irregular.</p><h2>3.2. Curva de Lissajous<a name="29"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+ m=1;
+ l=0.5;
+ g=9.8;
+ teta1_set=[0.05 5 10];
+ teta2_set=[0.05 5 15];
+ p_1_inicial=0;
+ p_2_inicial=0;
+ tt=2.5;
+ titulos={<span class="string">'Curva de Lissajous - regime de fraca amplitude'</span>,<span class="string">'Regime de m&eacute;dia amplitude'</span>,<span class="keyword">...</span>
+          <span class="string">'Regime de alta amplitude'</span>};
+
+<span class="keyword">for</span> i=1:length(teta1_set)
+
+teta_1_inicial=teta1_set(i);
+teta_2_inicial=teta2_set(i);
+sim(<span class="string">'pendulo_duplo'</span>, tt);
+
+figure(i);
+plot(teta_1,teta_2);
+title(titulos(i),<span class="string">'fontsize'</span>,14);
+xlabel(<span class="string">'\theta_1'</span>,<span class="string">'fontsize'</span>,16);
+ylabel(<span class="string">'\theta_2'</span>,<span class="string">'fontsize'</span>,16);
+set(gca,<span class="string">'fontsize'</span>,14);
+grid <span class="string">on</span>;
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="Lab1_18.png" alt=""> <img vspace="5" hspace="5" src="Lab1_19.png" alt=""> <img vspace="5" hspace="5" src="Lab1_20.png" alt=""> <p>Para valores muito pequenos de <img src="Lab1_eq04356345805472844781.png" alt="$\theta_1$"> e <img src="Lab1_eq17317125283182739185.png" alt="$\theta_2$">, verificamos que o sistema descreve uma curva de Lissajous quase perfeita, e que basta um pequeno aumento dos &acirc;ngulos para a curva come&ccedil;ar a perder a sua forma. No &uacute;ltimo gr&aacute;fico com valores de <img src="Lab1_eq08288499342375314727.png" alt="$\theta$"> inicial superiores a 10&ordm; a curva fica completamente desformada. Podemos concluir que dependendo dos &acirc;ngulos iniciais que escolhemos oferecemos menos/mais "momento" &agrave;s barras que originam traject&oacute;rias definidas/aleat&oacute;rias.</p><p>O tempo de simula&ccedil;&atilde;o influencia a forma da curva, uma vez que verific&aacute;mos que para, aproximadamente, tt=2.5 s o modelo desenha uma curva de Lissajous, enquanto que se aumentarmos o tempo(por exemplo, tt=10 s) o modelo desenha v&aacute;rias curvas.</p><h2>3.4 Tempo at&eacute; que uma das barras fa&ccedil;a um looping<a name="32"></a></h2><pre class="codeinput">clear;
+close <span class="string">all</span>;
+ m=1;
+ l=0.5;
+ g=9.8;
+ tt=250;
+ x=-1:0.05:1;
+ y=-1:0.05:1;
+ dteta1=0;
+ dteta2=(-30*pi)/180;
+
+ <span class="keyword">for</span> i=1:length(x);
+
+    <span class="keyword">for</span> j=1:length(y);
+        d=sqrt(x(i)^2+y(j)^2);
+      <span class="comment">%Verifica&ccedil;&atilde;o se a dist&acirc;ncia &eacute; inferior a 2*l</span>
+      <span class="keyword">if</span> d &gt; 2*l
+          tempo(i,j)=NaN;
+          <span class="keyword">continue</span>;
+      <span class="keyword">else</span>
+        <span class="comment">%Encontrar a posi&ccedil;&atilde;o do pend&ucirc;lo atrav&eacute;s das coordenadas</span>
+        teta=posicao(x(i),y(j),l);
+
+        teta_1_inicial=teta(1);
+        teta_2_inicial=teta(2);
+        p_1_inicial=(1/6)*m*(l^2)*(3*dteta2*cos(teta_1_inicial-teta_2_inicial));
+        p_2_inicial=(1/6)*m*(l^2)*(2*dteta2);
+
+        sim(<span class="string">'pendulo_duplo'</span>,tt);
+        <span class="comment">%Encontrar o ind&iacute;ce em que o p&ecirc;ndulo d&aacute; um loop (volta de 360&ordm;)</span>
+        k=find((teta_1&lt;teta_1_inicial-(2*pi)) | (teta_1&gt;teta_1_inicial+(2*pi)) | <span class="keyword">...</span>
+               (teta_2&lt;teta_2_inicial-(2*pi)) | (teta_2&gt;teta_2_inicial+(2*pi)),1);
+
+        <span class="keyword">if</span> k~=0 <span class="comment">%Se k=0, nenhuma das barras deu um loop</span>
+            tempo(i,j)=t(k);
+        <span class="keyword">else</span>
+            tempo(i,j)=NaN;
+        <span class="keyword">end</span>
+
+      <span class="keyword">end</span>
+   <span class="keyword">end</span>
+    <span class="comment">%waitbar(i/(length(x)));</span>
+ <span class="keyword">end</span>
+
+figure(1);
+pcolor(x,y,log10(tempo'));
+xlabel(<span class="string">'x'</span>,<span class="string">'fontsize'</span>,12);
+ylabel(<span class="string">'y'</span>,<span class="string">'fontsize'</span>,12);
+set(gca,<span class="string">'fontsize'</span>,12);
+title(<span class="string">'Tempos de looping'</span>,<span class="string">'fontsize'</span>,12);
+colorbar;
+</pre><img vspace="5" hspace="5" src="Lab1_21.png" alt=""> <p>Para a realiza&ccedil;&atilde;o desta al&iacute;nea foi utilizada a fun&ccedil;&atilde;o 'posicao', que recebe as coordenadas da ponta do p&ecirc;ndulo e retorna os &acirc;ngulos iniciais do mesmo, utilizando as express&otilde;es obtidas na al&iacute;nea 3.3.</p><pre class="codeinput">type(<span class="string">'posicao.m'</span>);
+</pre><pre class="codeoutput">
+ function teta=posicao(x,y,l)
+ %Verificar se est&aacute; na origem 
+ if x==0 &amp;&amp; y==0 
+     teta(1)=0;
+     teta(2)=pi;
+ else
+     d=sqrt(x^2+y^2);
+     sinal_x=x/abs(x); %guarda o sinal do x
+     sinal_y=y/abs(y); %guarda o sinal do y
+     
+     if x==0 %Se o x=0 s&oacute; nos interessa o sinal do y
+         teta(1)=(acos(d/(2*l))+acos(-y/d));
+         teta(2)=acos((-y/l)-cos(teta(1)))*sinal_y;
+     else
+        %Se o sinal_x&lt;0 queremos que o &acirc;ngulo seja negativo
+        teta(1)=(acos(d/(2*l))+acos(-y/d))*sinal_x; 
+        %Se o x&lt;coordenada x da ponta da barra 1 ent&atilde;o teta_2 &eacute; negativo,
+        %caso contr&aacute;rio teta_2 &eacute; positivo
+        if x&lt;l*sin(teta(1)) 
+            sinal_x=-1;
+        else
+            sinal_x=1;
+        end
+        
+        teta(2)=acos((-y/l)-cos(teta(1)))*sinal_x;
+      end 
+    end
+ end
+ 
+</pre><p>A partir dos resultados obtidos verificou-se que para y mais baixos, maior &eacute; o tempo necess&aacute;rio para que uma das barras d&ecirc; um looping, uma vez que quanto menor a coordenada y, menor &eacute; a energia pontencial na ponta do p&ecirc;ndulo, logo, &eacute; necess&aacute;rio uma velocidade angular inicial superior para levar a uma das barras do p&ecirc;ndulo a realizar um loop.</p><h2>3.4 Verifica&ccedil;&atilde;o de resultados<a name="37"></a></h2><pre class="codeinput">  clear;
+ close <span class="string">all</span>;
+ m=1;
+ l=0.5;
+ g=9.8;
+ tt_set=[30 100 250];
+ intervalos=[0 30 100 250];
+ x=[-0.7,-0.45,0.1];
+ y=[-0.4,-0.65,-0.55];
+ dteta1=0;
+ dteta2=(-30*pi)/180;
+ titulos={<span class="string">'Ponto de looping t=[0 30]s'</span>,<span class="string">'Ponto de looping t=[30 100]s'</span>,<span class="keyword">...</span>
+          <span class="string">'Ponto de looping t=[100 250]s'</span>};
+
+ <span class="keyword">for</span> i=1:length(x);
+       tt=tt_set(i);
+       teta=posicao(x(i),y(i),l);
+
+       teta_1_inicial=teta(1);
+       teta_2_inicial=teta(2);
+       p_1_inicial=(1/6)*m*(l^2)*(3*dteta2*cos(teta_1_inicial-teta_2_inicial));
+       p_2_inicial=(1/6)*m*(l^2)*(2*dteta2);
+
+       sim(<span class="string">'pendulo_duplo'</span>,tt);
+
+       k=find((teta_1&lt;teta_1_inicial-(2*pi)) | (teta_1&gt;teta_1_inicial+(2*pi)) | <span class="keyword">...</span>
+              (teta_2&lt;teta_2_inicial-(2*pi)) | (teta_2&gt;teta_2_inicial+(2*pi)),1);
+
+       figure(i);
+       plot(t,teta_2);
+       hold <span class="string">on</span>;
+       ponto=plot(t(k),teta_2(k),<span class="string">'r*'</span>);
+       xlim([intervalos(i) intervalos(i+1)]);
+       title(titulos(i),<span class="string">'fontsize'</span>,12);
+       xlabel(<span class="string">'Tempo [s]'</span>,<span class="string">'fontsize'</span>,12); ylabel(<span class="string">'\theta_2 [rad]'</span>,<span class="string">'fontsize'</span>,12);
+       set(gca,<span class="string">'fontsize'</span>,12);
+       legend(ponto,sprintf(<span class="string">'Ponto de looping=(%.2f s,%.2f rad)'</span>,t(k),teta_2(k)));
+       grid <span class="string">on</span>;
+
+       figure(i+3);
+       plot(t,teta_1);
+       xlim([intervalos(i) intervalos(i+1)]);
+       title(titulos(i),<span class="string">'fontsize'</span>,12);
+       xlabel(<span class="string">'Tempo [s]'</span>,<span class="string">'fontsize'</span>,12); ylabel(<span class="string">'\theta_1 [rad]'</span>,<span class="string">'fontsize'</span>,12);
+       set(gca,<span class="string">'fontsize'</span>,12);
+       grid <span class="string">on</span>;
+ <span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="Lab1_22.png" alt=""> <img vspace="5" hspace="5" src="Lab1_23.png" alt=""> <img vspace="5" hspace="5" src="Lab1_24.png" alt=""> <img vspace="5" hspace="5" src="Lab1_25.png" alt=""> <img vspace="5" hspace="5" src="Lab1_26.png" alt=""> <img vspace="5" hspace="5" src="Lab1_27.png" alt=""> <p>Tendo em considera&ccedil;&atilde;o que a primeira barra tem uma velocidade angular nula, &eacute; muito pouco prov&aacute;vel que esta barra seja a primeira a dar o loop. Desta forma, neste caso, verificou-se que apenas a segunda barra d&aacute; o loop.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 1º Laboratório de Modelação e Simulação
+% Alice Rosa, nº90007 
+%
+% Beatriz Pereira, nº90029 
+%
+% Grupo 16, Turno 3ª feira às 9h00 
+
+ %% 1. Simulação do movimento livre de uma viatura
+ 
+%Criação do seguinte diagrama de blocos com o SIMULINK:
+
+open('carro');
+
+%%
+
+%Definição dos parâmetros de simulação
+
+m=30;
+beta=5;
+vo_set=[-3 3];
+tau_set=[3 6 10];
+yo=5;
+tt=50;
+
+close all;
+f1=figure;
+f2=figure;
+
+for counter=1:length(vo_set);
+    vo=vo_set(counter);
+   
+    for tau=[3 6 10]
+    sim('carro',tt);
+    
+    figure(f1);
+    plot(t,v);
+    hold on;
+    
+    figure(f2);
+    plot(t,y);
+    hold on;
+    end
+end
+
+figure(f1);
+xlabel('t(s)','fontsize',12);
+ylabel('v(m/s)','fontsize',12);
+title('Velocidade','fontsize',12);
+grid on;
+set(gca,'fontsize',12);
+lg=legend(sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(1)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(2)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(3)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(1)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(2)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(3)));
+set(lg,'fontsize',9);   
+hold on;
+
+figure(f2);
+xlabel('t(s)','fontsize',12);
+ylabel('h(m)','fontsize',12);
+title('Posição','fontsize',12);
+grid on;
+set(gca,'fontsize',12);
+lg=legend(sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(1)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(2)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(1), tau_set(3)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(1)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(2)),...
+       sprintf('V_o=%d m/s tau=%d s',vo_set(2), tau_set(3)));
+set(lg,'fontsize',9);   
+
+%%
+% Tendo em conta que não está a ser aplicada nenhuma força exterior sobre o
+% carro, a única força que temos a atuar é a força de atrito, desta forma,
+% é de esperar que passado algum tempo a velocidade do carro tenda para 0,
+% que é exatamente o que se verifica nos gráficos obtidos. 
+% Também podemos verificar que quanto menor a constante de tempo $\tau$,
+% mais depressa o carro pára, o que seria de esperar tendo em conta a
+% equação obtida na alínea 1.3, pois a exponencial está elevada a
+% $-\frac{1}{\tau}$.
+%
+% Para os gráficos obtidos relativamente à posição do carro, esperava-se
+% que passado algum tempo este estabilizasse numa posição que se pode
+% calcular a partir da expressão obtida em 1.4: 
+% $y_{final}=y_o+\frac{V_o*m}{\beta}$ 
+%
+% Também se verificou que para uma velocidade inicial negativa (carro em marcha atrás)
+% a posição em que o carro pára também é negativa tendo em conta o nosso
+% referencial.
+
+%% 2.Modelo Predador-Presa
+
+%%% 2.2 Diferentes respostas para diferentes $\delta$ 
+
+% Criação do seguinte diagrama de blocos com o SIMULINK:
+open('predador_presa');
+%%
+clear;
+close all;
+
+delta1=1;
+delta2=-1;
+alpha1=1;
+alpha2=1;
+N1_inicial=3;
+N2_inicial=3;
+tt=30;
+
+sim('predador_presa',tt);
+
+figure(1);
+plot(t,N1,t,N2,'LineWidth',1.2);
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+title('Solução para: \delta_1=1, \delta_2=-1','fontsize',12);
+legend('N_1-Presa','N_2-Predador');
+grid on;
+hold on;
+
+tt=3;
+delta1=-1;
+delta2=1;
+
+sim('predador_presa',tt);
+figure(2);
+plot(t,N1,t,N2,'LineWidth',1.2);
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+title('Solução para: \delta_1=-1, \delta_2=1','fontsize',12);
+legend('N_1-Presa','N_2-Predador');
+grid on;
+hold on;
+
+tt=5;
+delta1=-1;
+delta2=-1;
+N1_inicial=3;
+
+sim('predador_presa',tt);
+figure(3);
+plot(t,N1,t,N2,'LineWidth',1.2);
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+title('Solução para: \delta_1=-1, \delta_2=-1','fontsize',12);
+legend('N_1-Presa','N_2-Predador');
+grid on;
+hold on;
+
+
+delta1=-1;
+delta2=-4;
+
+sim('predador_presa',tt);
+figure(4);
+plot(t,N1,t,N2,'LineWidth',1.2);
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+title('Solução para: \delta_1=-1, \delta_2=-4','fontsize',12);
+legend('N_1-Presa','N_2-Predador');
+grid on;
+hold on;
+
+%%
+% Para o primeiro gráfico, temos a solução oscilatória que como previsto
+% ocorre quando $\delta_1$>0 e $\delta_2$<0. O segundo gráfico é a
+% solução em que o predador cresce indefenidamente e a presa se extingue,
+% com $\delta_1<0$ e $\delta_2$>0. O terceiro gráfico é a solução em que a
+% presa e o predador se extiguem passado algum tempo, com $\delta_1$<0 e
+% $\delta_2$<0. O último gráfico obtido tem a mesma solução que o terceiro,
+% no entanto, enquanto que no gráfico anterior os predadores atingem um pico e
+% depois,passado algum tempo, é que se extiguem, neste gráfico diminui-se 
+% o $\delta_2$ de forma a que as espécies se extiguissem sensívelmente ao
+% mesmo tempo.
+
+%% 2.3 Ponto de equilíbrio, Espaço de fase ($N_1$, $N_2$)
+
+%%
+clear;
+close all;
+
+N1_inicial_set=[3 2];
+N2_inicial_set=[2 1];
+delta1=1;
+delta2=-1;
+alpha1=1;
+alpha2=1;
+tt=30;
+
+%Espaço de fase
+
+for counter=1:length(N1_inicial_set);
+    N1_inicial=N1_inicial_set(counter);
+    N2_inicial=N2_inicial_set(counter);
+    
+    sim('predador_presa',tt);
+    
+    figure(1);
+    plot(N1,N2);
+    hold on;
+    
+end
+
+figure(1);
+xlabel('Abundância da Presa','fontsize',12);
+ylabel('Abundância do Predador','fontsize',12);
+set(gca,'fontsize',12);
+legend(sprintf('N1(0),N2(0)= %d,%d',N1_inicial_set(1),N2_inicial_set(1)),...
+       sprintf('N1(0),N2(0)= %d,%d',N1_inicial_set(2),N2_inicial_set(2)));
+title('Modelo predador-presa');
+grid on;
+
+%Ponto de equilíbrio
+
+N1_inicial=delta1/alpha1;
+N2_inicial=-delta2/alpha2;
+tt=10;
+
+sim('predador_presa',tt);
+
+figure(2);
+p=plot(t,N1,t,N2,'REPLACE_WITH_DASH_DASH');
+p(1).LineWidth = 1.5;
+p(2).LineWidth = 2;
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+title('Ponto de equilíbrio','fontsize',12);
+legend('N1-Presa','N2-Predador');
+grid on;
+
+% Diferentes evoluções temporais
+
+N1_inicial_set=[1 2];
+N2_inicial_set=[2 1];
+tt=30;
+
+for counter=1:length(N1_inicial_set);
+    N1_inicial=N1_inicial_set(counter);
+    N2_inicial=N2_inicial_set(counter);
+    
+    sim('predador_presa',tt);
+    
+    figure(3);
+    p=plot(t,N1,t,N2);
+    hold on;
+end
+
+figure(3);
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+p(1).LineWidth = 1.5;
+p(2).LineWidth = 1.5;
+set(gca,'fontsize',12);
+lg=legend(sprintf('N_1-CI(%.0f,%.0f)',N1_inicial_set(1),N2_inicial_set(1)),...
+       sprintf('N_2-CI(%.0f,%.0f)',N1_inicial_set(1),N2_inicial_set(1)),...
+       sprintf('N_1-CI(%.1f,%.0f)',N1_inicial_set(2),N2_inicial_set(2)),...
+       sprintf('N_2-CI(%.1f,%.0f)',N1_inicial_set(2),N2_inicial_set(2)));
+set(lg,'fontsize',11);
+title('Modelo predador-presa');
+grid on;
+
+
+%%
+% No primeiro gráfico obteve-se o espaço de fase ($N_1$, $N_2$) para a solução
+% oscilatória com diferentes valores de condições iniciais. 
+% O segundo gráfico é a confirmação do ponto de equilíbrio, ou seja,
+% para determinadas condições iniciais (calculadas na alínea 2.2) o sistema
+% mantêm-se constante no tempo, que é o que se verifica. 
+% O último gráfico mostra como a mudança das condições iniciais alteram a
+% evolução do sistema no tempo. A situação em que $N_1(0)$ < $N_2(0)$
+% está em avanço e quadratura face à situação em que $N_1(0)$ > $N_2(0)$.
+
+%% 2.4 Otimização da curva
+
+%%% 2.4 a)
+ 
+%%
+clear;
+close all;
+
+N1_inicial=4;
+N2_inicial=1.6;
+delta1=3.1;
+delta2=-1.5;
+alpha1=1.4;
+alpha2=0.7;
+tt=20;
+load('presas.mat');
+
+sim('predador_presa',tt);
+plot(tr,yr,t,N2);
+legend('N_1-presa','N_2-predador');
+xlabel('Tempo','fontsize',12); ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+grid on;
+
+%%
+% O objectivo nesta questão era arranjar um equílibrio entre o $\alpha_2$ e 
+% $N_2(0)$ de forma a quando o número de presas diminuisse passado
+% algum tempo o número de predadores também começava a diminuir e
+% vice-versa, mantendo sempre a mesma desfasagem entre as curvas da presa
+% e predador. Desta forma, variou-se os parâmetros até se chegar a uma
+% solução aproximada da que se queria sendo esta ($\alpha_2$, $N_2(0)$)=(0.7,1.6).
+
+%% 2.4 b)
+
+%%
+clear;
+close all;
+
+N0_set=1.6:0.002:1.62;
+alpha_set=0.7:0.002:0.72;
+[X,Y]=meshgrid(N0_set,alpha_set);
+
+for i=1:length(N0_set);
+    V(1)=N0_set(i);
+    
+    for j=1:length(alpha_set);
+        V(2)=alpha_set(j);
+        dif(i,j)=MVAD(V);
+    end
+   % waitbar(i/10);
+end
+
+surf(X,Y,dif);
+set(gca,'zscale','log');
+set(gca,'zscale','log','fontsize',12);
+xlabel('N_2(0)','fontsize',12); ylabel('\alpha_2','fontsize',12'); 
+zlabel('Erro','fontsize',12); colorbar;
+
+%%
+% Função utilizada para calcular o Erro
+
+%%
+type('MVAD.m');
+
+%% 
+% Nesta questão, o objectivo era encontrar os parâmetros $\alpha_2$ e 
+% $N_2(0)$ de forma a obtermos uma curva o mais próxima possível da curva
+% que nos foi dada. Para isto criou-se a função erro que nos devolve o
+% máximo valor absoluto das diferenças entre os pontos fornecidos e os
+% pontos simulados para determinados parâmetros. No final, a partir do
+% gráfico obtido conclui-se que, dos parâmetros testados, os que melhor se
+% ajustam à curva fornecida são ($\alpha_2$, $N_2(0)$)=(0.704,1.6120).
+
+%% 2.4 c)
+
+clear;
+
+N0_2=[1.6, 2];
+alpha_2=[0.7, 3];
+
+ for i=1:length(N0_2)
+    xo=[N0_2(i),alpha_2(i)];
+    fun=@MVAD;
+    [point,erro]=fminsearch(fun,xo);
+    display(erro);
+    display(point);
+ end
+
+%%
+% Nesta alínea, para descobrir os parâmetros utilizou-se a função 
+% fminsearch em que a partir da função erro desenvolvida e de parâmetros 
+% iniciais esta função vai fazendo chamadas à função erro aproximando-se cada 
+% vez mais do ponto desejado. Desta forma, o nosso código fica muito mais 
+% eficiente e os parâmetros finais são mais exatos, relativamente à procura
+% feita anteriormente, com ($\alpha_2$, $N_2(0)$)=(0.7047,1.6144). 
+%
+% No entanto, realizou-se ainda outro exemplo com outro ponto inicial 
+% afastado do resultado ideal, onde se obteve um resultado completamente
+% diferente. Podemos assim concluir que é melhor utilizar esta função
+% quando já temos uma ideia dos parâmetros a que corresponde o erro mínimo,
+% senão a função encontra outro qualquer mínimo local que não a resposta
+% ideial.
+
+%% 2.4 d)
+
+clear;
+close all;
+
+N1_inicial=4;
+N2_inicial=1.6144;
+delta1=3.1;
+delta2=-1.5;
+alpha1=1.4;
+alpha2=0.7047;
+tt=20;
+load('presas.mat');
+
+sim('predador_presa',tt);
+plot(tr,yr,'o',t,N1,'LineWidth',1.2);
+legend('N1-Fornecido','N1-Simulado');
+xlabel('Tempo','fontsize',12);
+ylabel('Abundância','fontsize',12);
+set(gca,'fontsize',12);
+legend('N_1-Pontos fornecidos','N_1-Curva simulada');
+grid on;
+ax = gca;
+ax.GridAlpha = 0.6;
+
+%%
+% Esta alínea serve como verificação dos resultados obtidos. Como podemos
+% verificar utilizando os parâmetros calculados na alínea (c) a curva
+% simulada ajusta-se muito bem aos pontos fornecidos.
+ 
+%% 3. Sistema Caótico 
+%%% 3.1. Realização do modelo do sistema em Simulink e a passagem dos dados para o Matlab
+%%
+open('pendulo_duplo');
+%%
+clear;
+close all;
+ m=1;
+ l=0.5;
+ g=9.8;
+ teta_1_inicial=0.05;
+ teta_2_inicial=0.05;
+ p_1_inicial=0;
+ p_2_inicial=0;
+ tt=3;
+ 
+ sim('pendulo_duplo', tt);
+ 
+ %posição ao longo do tempo 
+x=l*(sin(teta_2)+sin(teta_1));
+y=-l*(cos(teta_2)+cos(teta_1));
+
+figure(1);
+plot(x,y);
+xlabel('x');
+ylabel('y');
+title('Sistema não caótico');
+
+teta_1_inicial=15;
+teta_2_inicial=15;
+sim('pendulo_duplo', tt);
+
+x=l*(sin(teta_2)+sin(teta_1));
+y=-l*(cos(teta_2)+cos(teta_1));
+
+figure(2);
+plot(x,y);
+xlabel('x');
+ylabel('y');
+title('Sistema caótico');
+
+%%
+% A partir dos gráficos obtidos verificou-se a implementação correta do
+% sistema dinâmico. Uma vez que para $\theta_1(0)$ e $\theta_2(0)$ pequenos
+% obteve-se uma curva em que os ângulos não se afastam muito dos ângulos
+% iniciais, como era de esperar. Enquanto que no segundo gráfico, se
+% verifica que para ângulos maiores o sistema começa a ter um
+% comportamento mais aleatório e irregular.
+
+%% 3.2. Curva de Lissajous
+%%
+
+clear;
+close all;
+ m=1;
+ l=0.5;
+ g=9.8;
+ teta1_set=[0.05 5 10];
+ teta2_set=[0.05 5 15];
+ p_1_inicial=0;
+ p_2_inicial=0;
+ tt=2.5;
+ titulos={'Curva de Lissajous - regime de fraca amplitude','Regime de média amplitude',...
+          'Regime de alta amplitude'};
+ 
+for i=1:length(teta1_set)
+
+teta_1_inicial=teta1_set(i);
+teta_2_inicial=teta2_set(i);
+sim('pendulo_duplo', tt);
+
+figure(i);
+plot(teta_1,teta_2);
+title(titulos(i),'fontsize',14);
+xlabel('\theta_1','fontsize',16);
+ylabel('\theta_2','fontsize',16);
+set(gca,'fontsize',14);
+grid on;
+end
+
+%%
+% Para valores muito pequenos de $\theta_1$ e $\theta_2$, verificamos que o
+% sistema descreve uma curva de Lissajous quase perfeita, e que basta um
+% pequeno aumento dos ângulos para a curva começar a perder a sua forma. No
+% último gráfico com valores de $\theta$ inicial superiores a 10º a curva
+% fica completamente desformada. Podemos concluir que dependendo dos
+% ângulos iniciais que escolhemos oferecemos menos/mais "momento" às barras
+% que originam trajectórias definidas/aleatórias. 
+%
+% O tempo de simulação influencia a forma da curva, uma vez que verificámos
+% que para, aproximadamente, tt=2.5 s o modelo desenha uma curva de
+% Lissajous, enquanto que se aumentarmos o tempo(por exemplo, tt=10 s) o modelo desenha
+% várias curvas.
+% 
+%% 3.4 Tempo até que uma das barras faça um looping
+%%
+
+clear;
+close all;
+ m=1;
+ l=0.5;
+ g=9.8;
+ tt=250;
+ x=-1:0.05:1;
+ y=-1:0.05:1;
+ dteta1=0;
+ dteta2=(-30*pi)/180;
+ 
+ for i=1:length(x);
+    
+    for j=1:length(y);
+        d=sqrt(x(i)^2+y(j)^2);
+      %Verificação se a distância é inferior a 2*l
+      if d > 2*l
+          tempo(i,j)=NaN;
+          continue;
+      else
+        %Encontrar a posição do pendûlo através das coordenadas
+        teta=posicao(x(i),y(j),l);
+        
+        teta_1_inicial=teta(1);
+        teta_2_inicial=teta(2);
+        p_1_inicial=(1/6)*m*(l^2)*(3*dteta2*cos(teta_1_inicial-teta_2_inicial));
+        p_2_inicial=(1/6)*m*(l^2)*(2*dteta2);
+        
+        sim('pendulo_duplo',tt);
+        %Encontrar o indíce em que o pêndulo dá um loop (volta de 360º)
+        k=find((teta_1<teta_1_inicial-(2*pi)) | (teta_1>teta_1_inicial+(2*pi)) | ...
+               (teta_2<teta_2_inicial-(2*pi)) | (teta_2>teta_2_inicial+(2*pi)),1);
+        
+        if k~=0 %Se k=0, nenhuma das barras deu um loop
+            tempo(i,j)=t(k);
+        else
+            tempo(i,j)=NaN;
+        end
+        
+      end
+   end
+    %waitbar(i/(length(x)));
+ end
+ 
+figure(1);
+pcolor(x,y,log10(tempo'));
+xlabel('x','fontsize',12);
+ylabel('y','fontsize',12);
+set(gca,'fontsize',12);
+title('Tempos de looping','fontsize',12);
+colorbar;
+
+%% 
+% Para a realização desta alínea foi utilizada a função 'posicao', que
+% recebe as coordenadas da ponta do pêndulo e retorna os ângulos iniciais
+% do mesmo, utilizando as expressões obtidas na alínea 3.3.
+
+%%
+type('posicao.m');
+
+%%
+% A partir dos resultados obtidos verificou-se que para y mais baixos, maior
+% é o tempo necessário para que uma das barras dê um looping, uma vez que
+% quanto menor a coordenada y, menor é a energia pontencial na ponta do pêndulo, 
+% logo, é necessário uma velocidade angular inicial superior para levar a uma 
+% das barras do pêndulo a realizar um loop.
+
+ %% 3.4 Verificação de resultados
+ %%
+  clear;
+ close all;
+ m=1;
+ l=0.5;
+ g=9.8;
+ tt_set=[30 100 250];
+ intervalos=[0 30 100 250];
+ x=[-0.7,-0.45,0.1];
+ y=[-0.4,-0.65,-0.55];
+ dteta1=0;
+ dteta2=(-30*pi)/180;
+ titulos={'Ponto de looping t=[0 30]s','Ponto de looping t=[30 100]s',...
+          'Ponto de looping t=[100 250]s'};
+ 
+ for i=1:length(x);
+       tt=tt_set(i);
+       teta=posicao(x(i),y(i),l);
+         
+       teta_1_inicial=teta(1);
+       teta_2_inicial=teta(2);
+       p_1_inicial=(1/6)*m*(l^2)*(3*dteta2*cos(teta_1_inicial-teta_2_inicial));
+       p_2_inicial=(1/6)*m*(l^2)*(2*dteta2);
+        
+       sim('pendulo_duplo',tt);
+         
+       k=find((teta_1<teta_1_inicial-(2*pi)) | (teta_1>teta_1_inicial+(2*pi)) | ...
+              (teta_2<teta_2_inicial-(2*pi)) | (teta_2>teta_2_inicial+(2*pi)),1);
+       
+       figure(i);
+       plot(t,teta_2);
+       hold on;
+       ponto=plot(t(k),teta_2(k),'r*');
+       xlim([intervalos(i) intervalos(i+1)]);
+       title(titulos(i),'fontsize',12);
+       xlabel('Tempo [s]','fontsize',12); ylabel('\theta_2 [rad]','fontsize',12);
+       set(gca,'fontsize',12);
+       legend(ponto,sprintf('Ponto de looping=(%.2f s,%.2f rad)',t(k),teta_2(k)));
+       grid on;
+       
+       figure(i+3);
+       plot(t,teta_1);
+       xlim([intervalos(i) intervalos(i+1)]);
+       title(titulos(i),'fontsize',12);
+       xlabel('Tempo [s]','fontsize',12); ylabel('\theta_1 [rad]','fontsize',12);
+       set(gca,'fontsize',12);
+       grid on;
+ end
+ 
+ %%
+ % Tendo em consideração que a primeira barra tem uma velocidade angular nula, é muito
+ % pouco provável que esta barra seja a primeira a dar o loop. Desta forma,
+ % neste caso, verificou-se que apenas a segunda barra dá o loop.
+ 
+##### SOURCE END #####
+--></body></html>
